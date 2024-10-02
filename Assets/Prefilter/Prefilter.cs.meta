@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 0061773d6bc7446bbb3fba66e259d521
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _source: {instanceID: 0}
+  - _resources: {fileID: 11400000, guid: 4f9330a89914fac438cb63225f3b6e25, type: 2}
+  - _lutTexture: {fileID: 8534537815417165676, guid: 244beb38c4aca46d38429ea743939884, type: 3}
+  - _output: {fileID: 8400000, guid: f0a330699c43c422dabf6b6f3e94262f, type: 2}
+  - _shader: {fileID: -6465566751694194690, guid: 078691ba654d74a2f8774ddc87613371, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
