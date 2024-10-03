@@ -16,7 +16,7 @@ sealed class PosterizerPass : ScriptableRenderPass
         // PosterizerController component reference
         var camera = context.Get<UniversalCameraData>().camera;
         var ctrl = camera.GetComponent<PosterizerController>();
-        if (ctrl == null || !ctrl.enabled) return;
+        if (ctrl == null || !ctrl.enabled || !ctrl.IsReady) return;
 
         // Not supported: Back buffer source
         var resource = context.Get<UniversalResourceData>();
