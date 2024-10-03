@@ -2,7 +2,7 @@ using UnityEngine;
 using Klak.TestTools;
 using BodyPix;
 
-namespace DCam2 {
+namespace Dcam2 {
 
 public sealed class Prefilter : MonoBehaviour
 {
@@ -59,4 +59,4 @@ public sealed class Prefilter : MonoBehaviour
     #endregion
 }
 
-} // namespace NNCam2
+} // namespace Dcam2

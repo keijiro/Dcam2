@@ -538,9 +538,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1697707426}
+  - component: {fileID: 1697707429}
   - component: {fileID: 1697707428}
   - component: {fileID: 1697707427}
-  - component: {fileID: 1697707429}
   m_Layer: 10
   m_Name: Image Plane
   m_TagString: Untagged
@@ -628,7 +628,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 096295c74022646cbb71d765e058c9fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _source: {fileID: 231048559}
+  <Source>k__BackingField: {fileID: 8400000, guid: f0a330699c43c422dabf6b6f3e94262f, type: 2}
+  Dithering: 0.5
 --- !u!1 &1839422254
 GameObject:
   m_ObjectHideFlags: 0

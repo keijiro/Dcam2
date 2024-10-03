@@ -8,7 +8,7 @@ using UnityEngine.Experimental.Rendering;
 
 // Cube LUT importer simply copied from the HDRP package
 
-namespace Dcam {
+namespace Dcam2 {
 
 [ScriptedImporter(0, "cube")]
 class CubeLutImporter : ScriptedImporter
@@ -150,4 +150,4 @@ class CubeLutImporter : ScriptedImporter
     }
 }
 
-} // namespace Dcam {
+} // namespace Dcam2 {
