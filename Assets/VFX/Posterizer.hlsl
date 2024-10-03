@@ -19,15 +19,11 @@ static float ImagePlane_Dither(uint2 psp)
 void ImagePlanePosterize_float
     (float4 Input,
      uint2 PixelPos,
-     float4x4 PaletteBG,
-     float4x4 PaletteFG,
-     float2 Opacity,
+     float4x4 Palette,
      float Dither,
      out float3 Output)
 {
     float dither = ImagePlane_Dither(PixelPos) * Dither;
     float lum = saturate(Luminance(LinearToSRGB(Input.rgb) + dither));
-    float4 bg = float4(PaletteBG[(uint)(lum * 3.9999)].rgb, Opacity.x);
-    float4 fg = float4(PaletteFG[(uint)(lum * 3.9999)].rgb, Opacity.y);
-    Output = lerp(bg.rgb, fg.rgb, Input.a);
+    Output = Palette[(uint)(lum * 3.9999)].rgb;
 }
