@@ -128,7 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 217308678}
   m_Layer: 10
-  m_Name: VFX Rig
+  m_Name: Composition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 231048558}
   - component: {fileID: 231048559}
   m_Layer: 0
-  m_Name: Video Source
+  m_Name: Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -560,7 +560,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1233718397}
   m_Layer: 0
-  m_Name: Pre VFX
+  m_Name: Preprocess
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 1265354293}
   - component: {fileID: 1265354292}
   - component: {fileID: 1265354291}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -621,7 +621,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 2048
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
@@ -684,7 +684,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 2048
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -852,9 +852,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41208620eda14c599c6eda20110702e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Dithering>k__BackingField: 0.5
-  <BackHue>k__BackingField: 0
-  <FrontHue>k__BackingField: 0
+  <Dithering>k__BackingField: 0.33
+  <BackHue>k__BackingField: 0.2
+  <FrontHue>k__BackingField: 0.6
   _shader: {fileID: -6465566751694194690, guid: d635ddf4c515b4179ba74946df2b2a50, type: 3}
 --- !u!1 &1839422254
 GameObject:
@@ -865,8 +865,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1839422255}
-  m_Layer: 0
-  m_Name: Final Render
+  m_Layer: 11
+  m_Name: Flipbook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -900,7 +900,7 @@ GameObject:
   - component: {fileID: 1854113481}
   - component: {fileID: 1854113483}
   - component: {fileID: 1854113482}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}

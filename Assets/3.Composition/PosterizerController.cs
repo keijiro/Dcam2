@@ -54,6 +54,16 @@ public sealed class PosterizerController : MonoBehaviour
         _material.SetMatrix(ShaderID.FrontPalette, mfg);
         _material.SetFloat(ShaderID.Dither, Dithering);
 
+        if (BackHue > 0)
+            _material.EnableKeyword("_ENABLE_BACK");
+        else
+            _material.DisableKeyword("_ENABLE_BACK");
+
+        if (FrontHue > 0)
+            _material.EnableKeyword("_ENABLE_FRONT");
+        else
+            _material.DisableKeyword("_ENABLE_FRONT");
+
         return _material;
     }
 }

@@ -9,7 +9,7 @@ using Cursor = UnityEngine.Cursor;
 
 namespace Dcam2 {
 
-public sealed class VideoSourceSelector : MonoBehaviour
+public sealed class SourceSelector : MonoBehaviour
 {
     #region Data source accessor for UI Toolkit
 

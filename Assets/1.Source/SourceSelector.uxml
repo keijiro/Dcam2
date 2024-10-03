@@ -1,7 +1,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Input/VideoSourceSelector.uss?fileID=7433441132597879392&amp;guid=94d53a0d37d4a48ecaeef06ad8b29b28&amp;type=3#VideoSourceSelector" />
+    <Style src="project://database/Assets/Input/SourceSelector.uss?fileID=7433441132597879392&amp;guid=94d53a0d37d4a48ecaeef06ad8b29b28&amp;type=3#SourceSelector" />
     <engine:VisualElement name="root" style="flex-grow: 1;" />
-    <engine:DropdownField label="Video Source" name="selector" data-source-type="Dcam2.VideoSourceSelector, Assembly-CSharp" style="position: absolute; top: 30px; left: 30px; right: 30px;">
+    <engine:DropdownField label="Video Source" name="selector" data-source-type="Dcam2.SourceSelector, Assembly-CSharp" style="position: absolute; top: 30px; left: 30px; right: 30px;">
         <Bindings>
             <engine:DataBinding property="choices" data-source-path="SourceList" binding-mode="ToTarget" />
         </Bindings>
