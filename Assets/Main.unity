@@ -1007,6 +1007,62 @@ MonoBehaviour:
   <BackHue>k__BackingField: 0.2
   <FrontHue>k__BackingField: 0.6
   _shader: {fileID: -6465566751694194690, guid: d635ddf4c515b4179ba74946df2b2a50, type: 3}
+--- !u!1 &1456620253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1456620254}
+  - component: {fileID: 1456620255}
+  m_Layer: 11
+  m_Name: Flipbook
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1456620254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456620253}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1839422255}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1456620255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456620253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a5575a4c839408fa10abcce3074e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Prompt>k__BackingField: 'A detailed surreal masterpiece illustration by J. C.
+    Leyendecker of a human exploding in a rococo style room with detailed walls '
+  <Strength>k__BackingField: 0.5
+  <Guidance>k__BackingField: 1.25
+  <FlipDuration>k__BackingField: 0.175
+  <QueueLength>k__BackingField: 9
+  <InsertionCount>k__BackingField: 5
+  _resourceDir: StableDiffusion
+  _source: {fileID: 8400000, guid: 9cd0f1b01971f4e648dec13fca61e55e, type: 2}
+  _pageMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  _pageMaterial: {fileID: -876546973899608171, guid: a2c759d370b5b4539807165785354adc, type: 3}
+  _sdPreprocess: {fileID: 7200000, guid: 7c06db8e339994c05bc2ad5e44c940de, type: 3}
 --- !u!1 &1771858788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,6 +1211,7 @@ Transform:
   m_Children:
   - {fileID: 1854113481}
   - {fileID: 1265354293}
+  - {fileID: 1456620254}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1854113480
@@ -1174,7 +1231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1854113481
 Transform:
   m_ObjectHideFlags: 0
