@@ -8,7 +8,8 @@ namespace Dcam2 {
 
 sealed class PosterizerPass : ScriptableRenderPass
 {
-    class PassData { public PosterizerController Controller { get; set; } }
+    public PosterizerPass()
+      => renderPassEvent = RenderPassEvent.AfterRenderingPostProcessing;
 
     public override void RecordRenderGraph(RenderGraph graph,
                                            ContextContainer context)
@@ -45,8 +46,7 @@ public sealed class PosterizerFeature : ScriptableRendererFeature
     PosterizerPass _pass;
 
     public override void Create()
-      => _pass = new PosterizerPass
-           { renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing };
+      => _pass = new PosterizerPass();
 
     public override void AddRenderPasses(ScriptableRenderer renderer,
                                          ref RenderingData data)
