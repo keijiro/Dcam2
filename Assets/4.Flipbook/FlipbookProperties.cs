@@ -3,7 +3,7 @@ using ImageSource = Klak.TestTools.ImageSource;
 
 namespace Dcam2 {
 
-public sealed partial class Flipbook
+public sealed partial class FlipBook
 {
     #region Public Properties (Serialized)
 

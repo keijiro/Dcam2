@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Dcam2 {
 
-public sealed partial class Flipbook : MonoBehaviour
+public sealed partial class FlipBook : MonoBehaviour
 {
     async Awaitable Start()
     {

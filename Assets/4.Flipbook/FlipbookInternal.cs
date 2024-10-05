@@ -6,7 +6,7 @@ using Scheduler = MLStableDiffusion.Scheduler;
 
 namespace Dcam2 {
 
-public sealed partial class Flipbook
+public sealed partial class FlipBook
 {
     const int ImageWidth = 640;
     const int ImageHeight = 384;
