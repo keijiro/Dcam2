@@ -57,8 +57,8 @@ public sealed partial class Flipbook
         _fgParams.rparams = new RenderParams(_pageMaterial){ matProps = _fgParams.props, layer = gameObject.layer };
         _bgParams.matrix = MakePageTransform(0.01f, 3);
         _fgParams.matrix = MakePageTransform(0, 1);
-        _bgParams.props.SetFloat("_OcclusionStrength", 0.85f);
-        _bgParams.props.SetFloat("_AspectRatio", (float)ImageWidth / ImageHeight);
+        _bgParams.props.SetFloat(ShaderID.Occlusion, 0.85f);
+        _bgParams.props.SetFloat(ShaderID.Aspect, (float)ImageWidth / ImageHeight);
 
         // Stable Diffusion pipeline
         _sdPipeline = new SDPipeline(_sdPreprocess)

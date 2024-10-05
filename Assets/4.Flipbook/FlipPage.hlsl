@@ -1,7 +1,5 @@
-#include "Packages/jp.keijiro.noiseshader/Shader/SimplexNoise2D.hlsl"
-
 // Pseudo ambient occlusion
-float ShufflerOcclusion(float2 uv, float size, float ext, float aspect)
+float FlipPageOcclusion(float2 uv, float size, float ext, float aspect)
 {
     float2 coord = max(0, abs(uv - 0.5) - size / 2);
     float dist = length(coord * float2(aspect, 1));
@@ -9,7 +7,7 @@ float ShufflerOcclusion(float2 uv, float size, float ext, float aspect)
 }
 
 // Source color sampling function
-float3 SampleShuffler
+float3 SampleFlipPage
   (UnityTexture2D tex1, UnityTexture2D tex2, float2 uv, float t)
 {
     float y1 = uv.y - pow(saturate(1 - t), 2.2);
@@ -20,31 +18,25 @@ float3 SampleShuffler
 }
 
 // Custom node function
-void ShufflerFragment_float
+void FlipPageFragment_float
   (UnityTexture2D tex1, UnityTexture2D tex2,
-   float2 uv, float time, float blur, float nlevel,
+   float2 uv, float time, float blur,
    float occ_size, float occ_ext, float occ_str, float aspect,
    out float3 output, out float alpha)
 {
     const uint SampleCount = 16;
 
     // Pseudo ambient occlusion
-    float occ = ShufflerOcclusion(uv, occ_size, occ_ext, aspect);
+    float occ = FlipPageOcclusion(uv, occ_size, occ_ext, aspect);
 
     // Source color sampling with motion blur
     float3 acc = 0;
     float t0 = time - blur / 2;
     float dt = blur / SampleCount;
     for (uint i = 0; i < SampleCount; i++)
-        acc += SampleShuffler(tex1, tex2, uv, t0 + dt * i);
-
-    // Noise animation
-    float nth = nlevel * 0.2;
-    float snoise = SimplexNoise(float2(uv.x * 7, _Time.y * 4));
-    float mask = smoothstep(nth - 0.01, nth, abs(snoise));
+        acc += SampleFlipPage(tex1, tex2, uv, t0 + dt * i);
 
     // Composition
-    output = (1 - occ * occ_str) * acc / SampleCount * mask;
+    output = (1 - occ * occ_str) * acc / SampleCount;
     alpha = 1 - length(max(abs(uv - 0.5) - 0.45, 0)) / 0.05;
-
 }

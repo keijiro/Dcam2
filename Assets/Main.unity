@@ -1121,7 +1121,7 @@ GameObject:
   - component: {fileID: 1456620254}
   - component: {fileID: 1456620255}
   m_Layer: 11
-  m_Name: Flipbook
+  m_Name: Flip Book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

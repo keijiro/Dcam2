@@ -55,14 +55,14 @@ public sealed partial class Flipbook : MonoBehaviour
         var fgTime = _flipCount > 0 && _flipCount < InsertionCount ? 1 : _flipTime;
 
         // Rendering
-        _bgParams.props.SetTexture("_Texture1", _bgFrames.flip);
-        _fgParams.props.SetTexture("_Texture1", fgTex1);
+        _bgParams.props.SetTexture(ShaderID.FlipTex, _bgFrames.flip);
+        _fgParams.props.SetTexture(ShaderID.FlipTex, fgTex1);
 
-        _bgParams.props.SetTexture("_Texture2", _bgFrames.sheet);
-        _fgParams.props.SetTexture("_Texture2", fgTex2);
+        _bgParams.props.SetTexture(ShaderID.BaseTex, _bgFrames.sheet);
+        _fgParams.props.SetTexture(ShaderID.BaseTex, fgTex2);
 
-        _bgParams.props.SetFloat("_Progress", Mathf.Clamp01(_flipTime));
-        _fgParams.props.SetFloat("_Progress", Mathf.Clamp01(fgTime));
+        _bgParams.props.SetFloat(ShaderID.Progress, Mathf.Clamp01(_flipTime));
+        _fgParams.props.SetFloat(ShaderID.Progress, Mathf.Clamp01(fgTime));
 
         Graphics.RenderMesh(_bgParams.rparams, _pageMesh, 0, _bgParams.matrix);
         Graphics.RenderMesh(_fgParams.rparams, _pageMesh, 0, _fgParams.matrix);
