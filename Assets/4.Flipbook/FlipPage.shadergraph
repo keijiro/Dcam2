@@ -927,7 +927,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "OccStr",
     "m_StageCapability": 3,
-    "m_Value": 1.0,
+    "m_Value": 0.5199999809265137,
     "m_DefaultValue": 0.0,
     "m_Labels": []
 }

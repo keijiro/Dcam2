@@ -38,5 +38,5 @@ void FlipPageFragment_float
 
     // Composition
     output = (1 - occ * occ_str) * acc / SampleCount;
-    alpha = 1 - length(max(abs(uv - 0.5) - 0.45, 0)) / 0.05;
+    alpha = saturate(1 - length(max(abs(uv - 0.5) - 0.45, 0)) / 0.05);
 }
