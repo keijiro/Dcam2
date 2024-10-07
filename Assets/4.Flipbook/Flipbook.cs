@@ -1,71 +1,64 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Dcam2 {
 
 public sealed partial class FlipBook : MonoBehaviour
 {
+    Queue<RenderTexture> _backQueue;
+    Queue<RenderTexture> _playQueue;
+    float _playTime;
+
     async Awaitable Start()
     {
         // Initialization
-        await InitObjects();
+        _backQueue = new Queue<RenderTexture>();
+        _playQueue = new Queue<RenderTexture>();
 
-        for (var genTask = (Awaitable)null;;)
+        for (var i = 0; i < QueueLength; i++)
         {
-            // Push the previous "latest" frame to the queue.
-            _frameQueue.Enqueue(_latestFrame);
+            _backQueue.Enqueue(new RenderTexture(ImageWidth, ImageHeight, 0));
+            _playQueue.Enqueue(new RenderTexture(ImageWidth, ImageHeight, 0));
+        }
 
-            // Reuse the previous "sheet" frame to store the latest frame.
-            _latestFrame = _bgFrames.sheet;
-            Graphics.Blit(_source, _latestFrame);
+        InitializeRenderer();
 
-            // The previous "flip" frame becomes the "sheet" frame.
-            _bgFrames.sheet = _bgFrames.flip;
+        await InitializeGeneratorAsync();
 
-            // Get a frame from the queue and make it flipping.
-            _bgFrames.flip = _frameQueue.Dequeue();
-
-            // Flip animation restart
-            _flipTime = 0;
-
-            // Generator task cycle
-            if (_flipCount >= QueueLength && (genTask == null || genTask.IsCompleted))
+        while (true)
+        {
+            for (var i = 0; i < QueueLength; i++)
             {
-                _fgFrames = (_fgFrames.front, _fgFrames.back);
-                genTask = RunSDPipelineAsync();
-                _flipCount = 0;
+                var page = _backQueue.Dequeue();
+                Graphics.Blit(_source, page);
+                _backQueue.Enqueue(page);
+                await Awaitable.WaitForSecondsAsync(PageInterval);
             }
 
-            // Per-flip wait
-            await Awaitable.WaitForSecondsAsync(FlipDuration);
-
-            _flipCount++;
+            (_backQueue, _playQueue) = (_playQueue, _backQueue);
+            _playTime = 0;
         }
     }
 
-    void OnDestroy() => ReleaseObjects();
+    void OnDestroy()
+    {
+        FinalizeGenerator();
+        FinalizeRenderer();
+        while (_backQueue.Count > 0) Destroy(_backQueue.Dequeue());
+        while (_playQueue.Count > 0) Destroy(_playQueue.Dequeue());
+    }
 
     void Update()
     {
-        // Flip animation time step
-        _flipTime += Time.deltaTime / FlipDuration;
+        _playTime += Time.deltaTime / GenerationLatency;
 
-        // Foreground page insertion
-        var fgTex1 = _flipCount < InsertionCount ? _fgFrames.front : _bgFrames.flip;
-        var fgTex2 = _flipCount == InsertionCount ? _fgFrames.front : _bgFrames.sheet;
-        var fgTime = _flipCount > 0 && _flipCount < InsertionCount ? 1 : _flipTime;
+        var pageTime = (1 - Mathf.Pow(1 - _playTime, 4)) * QueueLength;
+        var index = Mathf.Min((int)pageTime, QueueLength - 2);
 
-        // Rendering
-        _bgParams.props.SetTexture(ShaderID.FlipTex, _bgFrames.flip);
-        _fgParams.props.SetTexture(ShaderID.FlipTex, fgTex1);
-
-        _bgParams.props.SetTexture(ShaderID.BaseTex, _bgFrames.sheet);
-        _fgParams.props.SetTexture(ShaderID.BaseTex, fgTex2);
-
-        _bgParams.props.SetFloat(ShaderID.Progress, Mathf.Clamp01(_flipTime));
-        _fgParams.props.SetFloat(ShaderID.Progress, Mathf.Clamp01(fgTime));
-
-        Graphics.RenderMesh(_bgParams.rparams, _pageMesh, 0, _bgParams.matrix);
-        Graphics.RenderMesh(_fgParams.rparams, _pageMesh, 0, _fgParams.matrix);
+        RenderPages(_playQueue.ElementAt(index),
+                    _playQueue.ElementAt(index + 1),
+                    pageTime % 1);
     }
 }
 

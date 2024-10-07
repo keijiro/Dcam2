@@ -1,5 +1,4 @@
 using UnityEngine;
-using ImageSource = Klak.TestTools.ImageSource;
 
 namespace Dcam2 {
 
@@ -13,9 +12,9 @@ public sealed partial class FlipBook
     [field:SerializeField] public float Guidance { get; set; } = 1.25f;
 
     [field:Header("Flip animation")]
-    [field:SerializeField] public float FlipDuration { get; set; } = 0.175f;
-    [field:SerializeField] public int QueueLength { get; set; } = 9;
-    [field:SerializeField] public int InsertionCount { get; set; } = 5;
+    [field:SerializeField] public float GenerationLatency { get; set; } = 1.2f;
+    [field:SerializeField] public float PauseDuration { get; set; } = 0.3f;
+    [field:SerializeField] public float PageInterval { get; set; } = 0.05f;
 
     #endregion
 
@@ -32,6 +31,12 @@ public sealed partial class FlipBook
     [SerializeField, HideInInspector] Mesh _pageMesh = null;
     [SerializeField, HideInInspector] Material _pageMaterial = null;
     [SerializeField, HideInInspector] ComputeShader _sdPreprocess = null;
+
+    #endregion
+
+    #region Derived properties
+
+    int QueueLength => Mathf.CeilToInt(GenerationLatency / PageInterval);
 
     #endregion
 }
