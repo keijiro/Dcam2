@@ -33,7 +33,7 @@ public sealed partial class FlipBook : MonoBehaviour
                 var page = _backQueue.Dequeue();
                 Graphics.Blit(_source, page);
                 _backQueue.Enqueue(page);
-                await Awaitable.WaitForSecondsAsync(PageInterval);
+                await Awaitable.WaitForSecondsAsync(SampleInterval);
             }
 
             (_backQueue, _playQueue) = (_playQueue, _backQueue);
@@ -51,9 +51,9 @@ public sealed partial class FlipBook : MonoBehaviour
 
     void Update()
     {
-        _playTime += Time.deltaTime / GenerationLatency;
+        _playTime += Time.deltaTime / SequenceLength;
 
-        var pageTime = (1 - Mathf.Pow(1 - _playTime, 4)) * QueueLength;
+        var pageTime = (1 - Mathf.Pow(1 - _playTime, EaseOutPower)) * QueueLength;
         var index = Mathf.Min((int)pageTime, QueueLength - 2);
 
         RenderPages(_playQueue.ElementAt(index),
