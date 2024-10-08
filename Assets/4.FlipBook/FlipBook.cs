@@ -1,43 +1,42 @@
 using UnityEngine;
-using System.Collections.Generic;
-using System.Linq;
+using Unity.Mathematics;
 
 namespace Dcam2 {
 
 public sealed partial class FlipBook : MonoBehaviour
 {
-    Queue<RenderTexture> _backQueue;
-    Queue<RenderTexture> _playQueue;
-    float _playTime;
+    RenderTexture[][] _queue;
+    double _time;
 
     async Awaitable Start()
     {
         // Initialization
-        _backQueue = new Queue<RenderTexture>();
-        _playQueue = new Queue<RenderTexture>();
+        _queue = new RenderTexture[2][];
+        _queue[0] = new RenderTexture[QueueLength];
+        _queue[1] = new RenderTexture[QueueLength];
 
         for (var i = 0; i < QueueLength; i++)
         {
-            _backQueue.Enqueue(new RenderTexture(ImageWidth, ImageHeight, 0));
-            _playQueue.Enqueue(new RenderTexture(ImageWidth, ImageHeight, 0));
+            _queue[0][i] = new RenderTexture(ImageWidth, ImageHeight, 0);
+            _queue[1][i] = new RenderTexture(ImageWidth, ImageHeight, 0);
         }
 
         InitializeRenderer();
 
         await InitializeGeneratorAsync();
 
-        while (true)
+        for (var last = -1;;)
         {
-            for (var i = 0; i < QueueLength; i++)
+            var idx = (int)(_time / _sampleInterval);
+            if (idx > last)
             {
-                var page = _backQueue.Dequeue();
+                var qidx = idx / QueueLength % 2;
+                var pidx = idx % QueueLength;
+                var page = _queue[qidx][pidx];
                 Graphics.Blit(_source, page);
-                _backQueue.Enqueue(page);
-                await Awaitable.WaitForSecondsAsync(SampleInterval);
+                last = idx;
             }
-
-            (_backQueue, _playQueue) = (_playQueue, _backQueue);
-            _playTime = 0;
+            await Awaitable.NextFrameAsync();
         }
     }
 
@@ -45,20 +44,30 @@ public sealed partial class FlipBook : MonoBehaviour
     {
         FinalizeGenerator();
         FinalizeRenderer();
-        while (_backQueue.Count > 0) Destroy(_backQueue.Dequeue());
-        while (_playQueue.Count > 0) Destroy(_playQueue.Dequeue());
+        for (var i = 0; i < QueueLength; i++)
+        {
+            Destroy(_queue[0][i]);
+            Destroy(_queue[1][i]);
+        }
     }
 
     void Update()
     {
-        _playTime += Time.deltaTime / SequenceLength;
+        if (_time >= LastPageDuration + SequenceDuration) DrawPages();
+        _time += Time.deltaTime;
+    }
 
-        var pageTime = (1 - Mathf.Pow(1 - _playTime, EaseOutPower)) * QueueLength;
-        var index = Mathf.Min((int)pageTime, QueueLength - 2);
+    RenderTexture GetPage(int qidx, int pidx)
+        => pidx >= 0 ? _queue[qidx][pidx] : _queue[qidx ^ 1][QueueLength - 1];
 
-        RenderPages(_playQueue.ElementAt(index),
-                    _playQueue.ElementAt(index + 1),
-                    pageTime % 1);
+    void DrawPages()
+    {
+        var t = (_time - LastPageDuration) / SequenceDuration - 1;
+        var qidx = (int)t % 2;
+        var eased = 1 - math.pow(1 - math.frac(t), _easeOutPower);
+        var pidx = (int)(eased * QueueLength);
+        var prog = math.frac(eased * QueueLength);
+        RenderPages(GetPage(qidx, pidx - 1), GetPage(qidx, pidx), (float)prog);
     }
 }
 
