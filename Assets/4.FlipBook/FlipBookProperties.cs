@@ -6,7 +6,7 @@ namespace Dcam2 {
 
 public sealed partial class FlipBook
 {
-    #region Public Properties (Serialized)
+    #region Public properties (serialized)
 
     [field:SerializeField] public string Prompt { get; set; } = "painting";
     [field:SerializeField] public float Strength { get; set; } = 0.5f;
@@ -42,12 +42,23 @@ public sealed partial class FlipBook
     double SequenceDuration
       => QueueLength * (double)_sampleInterval;
 
-    [CreateProperty]
-    public double LastPageDuration
-        => SequenceDuration *
-             math.pow(_sampleInterval / SequenceDuration, 1.0 / _easeOutPower);
+    double LastPageDuration
+      => SequenceDuration *
+         math.pow(_sampleInterval / SequenceDuration, 1.0 / _easeOutPower);
 
     #endregion
+
+    #if UNITY_EDITOR
+
+    #region Editor UI 
+
+    [CreateProperty]
+    public string LastPageDurationText
+      => $"Last Page Time = {LastPageDuration:0.000}";
+
+    #endregion
+
+    #endif
 }
 
 } // namespace Dcam2
