@@ -38,7 +38,7 @@ public sealed partial class FlipBook
     }
 
     void RenderPages
-      (RenderTexture basePage, RenderTexture flipPage, float progress)
+      (RenderTexture basePage, RenderTexture flipPage, float progress, float blur)
     {
         _bg.props.SetTexture(ShaderID.FlipTex, flipPage);
         _fg.props.SetTexture(ShaderID.FlipTex, flipPage);
@@ -48,6 +48,9 @@ public sealed partial class FlipBook
 
         _bg.props.SetFloat(ShaderID.Progress, progress);
         _fg.props.SetFloat(ShaderID.Progress, progress);
+
+        _bg.props.SetFloat(ShaderID.Blur, blur);
+        _fg.props.SetFloat(ShaderID.Blur, blur);
 
         Graphics.RenderMesh(_bg.rparams, _pageMesh, 0, _bg.matrix);
         Graphics.RenderMesh(_fg.rparams, _pageMesh, 0, _fg.matrix);

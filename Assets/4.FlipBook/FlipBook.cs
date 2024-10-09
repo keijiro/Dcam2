@@ -67,7 +67,8 @@ public sealed partial class FlipBook : MonoBehaviour
         var eased = 1 - math.pow(1 - math.frac(t), _easeOutPower);
         var pidx = (int)(eased * QueueLength);
         var prog = math.frac(eased * QueueLength);
-        RenderPages(GetPage(qidx, pidx - 1), GetPage(qidx, pidx), (float)prog);
+        var blur = _motionBlur * _easeOutPower * math.pow(1 - math.frac(t), _easeOutPower - 1);
+        RenderPages(GetPage(qidx, pidx - 1), GetPage(qidx, pidx), (float)prog, (float)blur);
     }
 }
 

@@ -7,6 +7,7 @@ static class ShaderID
     public static readonly int Aspect = Shader.PropertyToID("_Aspect");
     public static readonly int BackPalette = Shader.PropertyToID("_BackPalette");
     public static readonly int BaseTex = Shader.PropertyToID("_BaseTex");
+    public static readonly int Blur = Shader.PropertyToID("_Blur");
     public static readonly int BodyPixTex = Shader.PropertyToID("_BodyPixTex");
     public static readonly int Dither = Shader.PropertyToID("_Dither");
     public static readonly int FlipTex = Shader.PropertyToID("_FlipTex");

@@ -17,6 +17,9 @@
         },
         {
             "m_Id": "a55ce7b1e8844ea698eedd66c7abe13f"
+        },
+        {
+            "m_Id": "5625aa939887413294808b0474503eb2"
         }
     ],
     "m_Keywords": [],
@@ -62,11 +65,28 @@
         },
         {
             "m_Id": "5bcf3e87392840e195f3d36db3a2fe2c"
+        },
+        {
+            "m_Id": "1569cd593b8b41f79537d6e1fc49e7c9"
         }
     ],
     "m_GroupDatas": [],
     "m_StickyNoteDatas": [],
     "m_Edges": [
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "1569cd593b8b41f79537d6e1fc49e7c9"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "1ec59d018c4740d788702a95329b5668"
+                },
+                "m_SlotId": 5
+            }
+        },
         {
             "m_OutputSlot": {
                 "m_Node": {
@@ -251,6 +271,42 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "1569cd593b8b41f79537d6e1fc49e7c9",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -482.0,
+            "y": 329.4999694824219,
+            "width": 134.5,
+            "height": 34.000030517578128
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "e1c098c1c44b4391ae54e1dbdbe8bcab"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "5625aa939887413294808b0474503eb2"
+    }
 }
 
 {
@@ -588,6 +644,34 @@
     "m_Value": 0.07000000029802323,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "5625aa939887413294808b0474503eb2",
+    "m_Guid": {
+        "m_GuidSerialized": "da79bca2-7dcd-445c-9ee1-81e79c10f351"
+    },
+    "m_Name": "Motion Blur",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Motion Blur",
+    "m_DefaultReferenceName": "_Motion_Blur",
+    "m_OverrideReferenceName": "_Blur",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 0.07000000029802323,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
 }
 
 {
@@ -1204,6 +1288,21 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "e1c098c1c44b4391ae54e1dbdbe8bcab",
+    "m_Id": 0,
+    "m_DisplayName": "Motion Blur",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "e4fdce4071074459b886209778a44bf9",
     "m_Id": 9,
     "m_DisplayName": "Alpha",
@@ -1344,6 +1443,9 @@
         },
         {
             "m_Id": "f64fd312d53a430490790426ac52097a"
+        },
+        {
+            "m_Id": "5625aa939887413294808b0474503eb2"
         },
         {
             "m_Id": "4c395a4f6f054c1c978dac525d74f02f"

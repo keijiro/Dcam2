@@ -1185,6 +1185,7 @@ MonoBehaviour:
   _sampleInterval: 0.05
   _sequenceDuration: 1.1
   _easeOutPower: 3.1
+  _motionBlur: 0.15
   _resourceDir: StableDiffusion
   _source: {fileID: 8400000, guid: 9cd0f1b01971f4e648dec13fca61e55e, type: 2}
   _pageMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
