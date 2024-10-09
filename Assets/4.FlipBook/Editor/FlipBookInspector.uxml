@@ -9,9 +9,9 @@
     <engine:FloatField label="Sequence Length" binding-path="_sequenceDuration" name="sequence-duration" />
     <engine:FloatField label="Ease Out Power" binding-path="_easeOutPower" name="ease-out-power" />
     <engine:FloatField label="Motion Blur" binding-path="_motionBlur" name="motion-blur" />
-    <engine:Label text="Last Page Time = 0.50" name="label-last-page-time" style="color: rgb(106, 106, 106); margin-top: 4px; margin-right: 4px; margin-bottom: 4px; margin-left: 4px;">
+    <engine:Label text="Hint" name="label-hint" style="color: rgb(106, 106, 106); margin-top: 4px; margin-right: 4px; margin-bottom: 4px; margin-left: 4px;">
         <Bindings>
-            <engine:DataBinding property="text" data-source-path="LastPageDurationText" data-source-type="Dcam2.FlipBook, Assembly-CSharp" binding-mode="ToTarget" />
+            <engine:DataBinding property="text" data-source-path="HintText" data-source-type="Dcam2.FlipBook, Assembly-CSharp" binding-mode="ToTarget" />
         </Bindings>
     </engine:Label>
 </engine:UXML>

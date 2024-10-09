@@ -53,8 +53,8 @@ public sealed partial class FlipBook
     #region Editor UI 
 
     [CreateProperty]
-    public string LastPageDurationText
-      => $"Last Page Time = {LastPageDuration:0.000}";
+    public string HintText
+      => $"Last Page Duration: {LastPageDuration:0.000}";
 
     #endregion
 
