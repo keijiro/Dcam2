@@ -1,19 +1,19 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <engine:Label text="Stable Diffusion" style="-unity-font-style: bold; margin-top: 8px;" />
-    <engine:TextField label="Prompt" binding-path="&lt;Prompt&gt;k__BackingField" multiline="true" style="white-space: normal;" />
-    <engine:FloatField binding-path="&lt;Strength&gt;k__BackingField" label="Strength" />
-    <engine:FloatField label="Guidance" binding-path="&lt;Guidance&gt;k__BackingField" />
-    <editor:ObjectField label="Source" binding-path="_source" type="UnityEngine.Texture, UnityEngine.CoreModule" />
-    <engine:Label text="Flip Animation" style="-unity-font-style: bold; margin-top: 8px;" />
-    <engine:FloatField label="Sample Interval" binding-path="_sampleInterval" />
-    <engine:FloatField label="Sequence Length" binding-path="_sequenceDuration" />
-    <engine:FloatField label="Ease Out Power" binding-path="_easeOutPower" />
-    <engine:FloatField label="Motion Blur" binding-path="_motionBlur" />
-    <engine:VisualElement style="flex-grow: 1; max-height: 40px; margin-top: 8px; margin-right: 8px; margin-bottom: 8px; margin-left: 8px; border-left-color: rgb(106, 106, 106); border-right-color: rgb(106, 106, 106); border-top-color: rgb(106, 106, 106); border-bottom-color: rgb(106, 106, 106); border-top-width: 0.5px; border-right-width: 0.5px; border-bottom-width: 0.5px; border-left-width: 0.5px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; flex-direction: row; justify-content: center; align-items: center;">
-        <engine:Label text="Last Page Time = " />
-        <engine:Label text="3.14">
+    <engine:Label text="Stable Diffusion" name="label-stable-diffusion" style="-unity-font-style: bold; margin-top: 8px;" />
+    <engine:TextField label="Prompt" binding-path="&lt;Prompt&gt;k__BackingField" multiline="true" name="prompt" style="white-space: normal;" />
+    <engine:FloatField binding-path="&lt;Strength&gt;k__BackingField" label="Strength" name="strength" />
+    <engine:FloatField label="Guidance" binding-path="&lt;Guidance&gt;k__BackingField" name="guidance" />
+    <editor:ObjectField label="Source" binding-path="_source" type="UnityEngine.Texture, UnityEngine.CoreModule" name="source" />
+    <engine:Label text="Flip Animation" name="label-flip-animation" style="-unity-font-style: bold; margin-top: 8px;" />
+    <engine:FloatField label="Sample Interval" binding-path="_sampleInterval" name="sample-interval" />
+    <engine:FloatField label="Sequence Length" binding-path="_sequenceDuration" name="sequence-duration" />
+    <engine:FloatField label="Ease Out Power" binding-path="_easeOutPower" name="ease-out-power" />
+    <engine:FloatField label="Motion Blur" binding-path="_motionBlur" name="motion-blur" />
+    <engine:VisualElement name="hint-box" style="flex-direction: row; justify-content: flex-start; align-items: center; margin-top: 4px; margin-right: 4px; margin-bottom: 4px; margin-left: 4px;">
+        <engine:Label text="Last Page Time = " name="label-last-page-time" style="color: rgb(106, 106, 106);" />
+        <engine:Label text="3.14" name="last-page-time" style="color: rgb(108, 108, 108);">
             <Bindings>
-                <engine:DataBinding property="text" data-source-path="LastPageDuration" data-source-type="Dcam2.FlipBook, Assembly-CSharp" binding-mode="ToTarget" />
+                <engine:DataBinding property="text" data-source-path="LastPageDuration" data-source-type="Dcam2.FlipBook, Assembly-CSharp" binding-mode="ToTarget" source-to-ui-converters="Double to String (Three Decimal)" />
             </Bindings>
         </engine:Label>
     </engine:VisualElement>
