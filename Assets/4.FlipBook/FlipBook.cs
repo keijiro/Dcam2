@@ -3,26 +3,16 @@ using Unity.Mathematics;
 
 namespace Dcam2 {
 
+// FlipBook - Main MonoBehaviour implementation
+
 public sealed partial class FlipBook : MonoBehaviour
 {
-    RenderTexture[][] _queue;
     double _time;
 
     async Awaitable Start()
     {
-        // Initialization
-        _queue = new RenderTexture[2][];
-        _queue[0] = new RenderTexture[QueueLength];
-        _queue[1] = new RenderTexture[QueueLength];
-
-        for (var i = 0; i < QueueLength; i++)
-        {
-            _queue[0][i] = new RenderTexture(ImageWidth, ImageHeight, 0);
-            _queue[1][i] = new RenderTexture(ImageWidth, ImageHeight, 0);
-        }
-
+        InitializeQueue();
         InitializeRenderer();
-
         await InitializeGeneratorAsync();
 
         for (var last = -1;;)
@@ -32,7 +22,7 @@ public sealed partial class FlipBook : MonoBehaviour
             {
                 var qidx = idx / QueueLength % 2;
                 var pidx = idx % QueueLength;
-                var page = _queue[qidx][pidx];
+                var page = GetPage(qidx, pidx);
                 Graphics.Blit(_source, page);
                 last = idx;
             }
@@ -44,11 +34,7 @@ public sealed partial class FlipBook : MonoBehaviour
     {
         FinalizeGenerator();
         FinalizeRenderer();
-        for (var i = 0; i < QueueLength; i++)
-        {
-            Destroy(_queue[0][i]);
-            Destroy(_queue[1][i]);
-        }
+        FinalizeQueue();
     }
 
     void Update()
@@ -57,18 +43,19 @@ public sealed partial class FlipBook : MonoBehaviour
         _time += Time.deltaTime;
     }
 
-    RenderTexture GetPage(int qidx, int pidx)
-        => pidx >= 0 ? _queue[qidx][pidx] : _queue[qidx ^ 1][QueueLength - 1];
-
     void DrawPages()
     {
         var t = (_time - LastPageDuration) / SequenceDuration - 1;
+        var t_p = 1 - math.pow(1 - math.frac(t), _easeOutPower);
+        var dt_p = _easeOutPower * math.pow(1 - math.frac(t), _easeOutPower - 1);
+
         var qidx = (int)t % 2;
-        var eased = 1 - math.pow(1 - math.frac(t), _easeOutPower);
-        var pidx = (int)(eased * QueueLength);
-        var prog = math.frac(eased * QueueLength);
-        var blur = _motionBlur * _easeOutPower * math.pow(1 - math.frac(t), _easeOutPower - 1);
-        RenderPages(GetPage(qidx, pidx - 1), GetPage(qidx, pidx), (float)prog, (float)blur);
+        var pidx = (int)(t_p * QueueLength);
+
+        RenderPages(GetPage(qidx, pidx - 1),
+                    GetPage(qidx, pidx),
+                    math.frac((float)t_p * QueueLength),
+                    _motionBlur * (float)dt_p);
     }
 }
 

@@ -4,6 +4,8 @@ using Unity.Mathematics;
 
 namespace Dcam2 {
 
+// FlipBook - Properties
+
 public sealed partial class FlipBook
 {
     #region Public properties (serialized)

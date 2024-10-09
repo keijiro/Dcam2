@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace Dcam2 {
 
+// FlipBook - Renderer implementation
+
 public sealed partial class FlipBook
 {
     // Background/foreground
