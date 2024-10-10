@@ -1182,8 +1182,8 @@ MonoBehaviour:
     of a human exploding in a rococo style room with detailed walls
   <Strength>k__BackingField: 0.5
   <Guidance>k__BackingField: 1.25
-  _sampleInterval: 0.06
-  _sequenceDuration: 1.15
+  _sampleInterval: 0.05
+  _sequenceDuration: 1.2
   _easeOutPower: 3.3
   _motionBlur: 0.2
   _resourceDir: StableDiffusion

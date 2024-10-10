@@ -24,7 +24,7 @@ void FlipPageFragment_float
    float occ_size, float occ_ext, float occ_str, float aspect,
    out float3 output, out float alpha)
 {
-    const uint SampleCount = 16;
+    const uint SampleCount = 20;
 
     // Pseudo ambient occlusion
     float occ = FlipPageOcclusion(uv, occ_size, occ_ext, aspect);
