@@ -7,26 +7,37 @@ namespace Dcam2 {
 
 public sealed partial class FlipBook : MonoBehaviour
 {
-    double _time;
-
     async Awaitable Start()
     {
         InitializeQueue();
         InitializeRenderer();
         await InitializeGeneratorAsync();
 
-        for (var last = -1;;)
+        for (var (last, genTask) = (-1, (Awaitable)null);;)
         {
-            var idx = (int)(_time / _sampleInterval);
-            if (idx > last)
+            var idx = (int)(Time.timeAsDouble / _sampleInterval);
+
+            if (idx == last)
             {
-                var qidx = idx / QueueLength % 2;
-                var pidx = idx % QueueLength;
-                var page = GetPage(qidx, pidx);
-                Graphics.Blit(_source, page);
-                last = idx;
+                await Awaitable.NextFrameAsync();
+                continue;
             }
-            await Awaitable.NextFrameAsync();
+
+            var qidx = idx / QueueLength % 2;
+            var pidx = idx % QueueLength;
+            var page = GetPage(qidx, pidx);
+
+            Graphics.Blit(_source, page);
+
+            if (pidx == QueueLength - 1)
+            {
+                if (genTask != null && !genTask.IsCompleted)
+                    Debug.Log("Generator task not completed");
+                else
+                    genTask = RunGeneratorAsync(page, page);
+            }
+
+            last = idx;
         }
     }
 
@@ -38,14 +49,11 @@ public sealed partial class FlipBook : MonoBehaviour
     }
 
     void Update()
-    {
-        if (_time >= LastPageDuration + SequenceDuration) DrawPages();
-        _time += Time.deltaTime;
-    }
+      => DrawPages();
 
     void DrawPages()
     {
-        var t = (_time - LastPageDuration) / SequenceDuration - 1;
+        var t = (Time.timeAsDouble - LastPageDuration) / SequenceDuration - 1;
         var t_p = 1 - math.pow(1 - math.frac(t), _easeOutPower);
         var dt_p = _easeOutPower * math.pow(1 - math.frac(t), _easeOutPower - 1);
 

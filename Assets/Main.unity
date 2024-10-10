@@ -616,7 +616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &869207682
 Transform:
   m_ObjectHideFlags: 0
@@ -1131,8 +1131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Dithering>k__BackingField: 0.1
-  <BackHue>k__BackingField: 0.4
-  <FrontHue>k__BackingField: 0.8
+  <BackHue>k__BackingField: 0
+  <FrontHue>k__BackingField: 0
   _shader: {fileID: -6465566751694194690, guid: d635ddf4c515b4179ba74946df2b2a50, type: 3}
 --- !u!1 &1456620253
 GameObject:
@@ -1182,10 +1182,10 @@ MonoBehaviour:
     of a human exploding in a rococo style room with detailed walls
   <Strength>k__BackingField: 0.5
   <Guidance>k__BackingField: 1.25
-  _sampleInterval: 0.05
-  _sequenceDuration: 1.1
-  _easeOutPower: 3
-  _motionBlur: 0.15
+  _sampleInterval: 0.06
+  _sequenceDuration: 1.15
+  _easeOutPower: 3.3
+  _motionBlur: 0.2
   _resourceDir: StableDiffusion
   _source: {fileID: 8400000, guid: 9cd0f1b01971f4e648dec13fca61e55e, type: 2}
   _pageMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
