@@ -1,6 +1,4 @@
 using UnityEngine;
-using Unity.Properties;
-using Unity.Mathematics;
 
 namespace Dcam2 {
 
@@ -35,32 +33,6 @@ public sealed partial class FlipBook
     [SerializeField, HideInInspector] ComputeShader _sdPreprocess = null;
 
     #endregion
-
-    #region Derived properties
-
-    int QueueLength
-      => (int)(_sequenceDuration / _sampleInterval);
-
-    double SequenceDuration
-      => QueueLength * (double)_sampleInterval;
-
-    double LastPageDuration
-      => SequenceDuration *
-         math.pow(_sampleInterval / SequenceDuration, 1.0 / _easeOutPower);
-
-    #endregion
-
-    #if UNITY_EDITOR
-
-    #region Editor UI 
-
-    [CreateProperty]
-    public string HintText
-      => $"Last Page Duration: {LastPageDuration:0.000}";
-
-    #endregion
-
-    #endif
 }
 
 } // namespace Dcam2
