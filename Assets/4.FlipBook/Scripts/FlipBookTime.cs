@@ -13,21 +13,24 @@ public sealed partial class FlipBook
     int QueueLength
       => (int)(_sequenceDuration / _sampleInterval);
 
-    double SequenceDuration
+    public double SequenceDuration
       => QueueLength * (double)_sampleInterval;
 
-    double LastPageDuration
+    public double LastPageDuration
       => SequenceDuration *
          math.pow(_sampleInterval / SequenceDuration, 1.0 / _easeOutPower);
 
-    double CurrentTime
+    public double CurrentTime
       => Time.timeAsDouble;
 
     int CurrentSampleIndex
       => (int)(CurrentTime / _sampleInterval);
 
-    double CurrentPlayTime
+    public double CurrentPlayTime
       => CurrentTime - LastPageDuration - SequenceDuration;
+
+    public int CurrentPlaySequenceIndex
+      => (int)(CurrentPlayTime / SequenceDuration);
 
     #endregion
 
@@ -35,7 +38,14 @@ public sealed partial class FlipBook
 
     async Awaitable WaitSampleIndex(int index)
     {
-        while (CurrentSampleIndex < index) await Awaitable.NextFrameAsync();
+        while (CurrentSampleIndex < index)
+            await Awaitable.NextFrameAsync();
+    }
+
+    public async Awaitable WaitPlaySequenceIndex(int index)
+    {
+        while (CurrentPlaySequenceIndex < index)
+            await Awaitable.NextFrameAsync();
     }
 
     #endregion

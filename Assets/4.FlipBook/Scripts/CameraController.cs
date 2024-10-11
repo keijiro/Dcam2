@@ -2,65 +2,73 @@ using UnityEngine;
 using Unity.Mathematics;
 using Random = Unity.Mathematics.Random;
 using Klak.Math;
+using Klak.Motion;
 
 namespace Dcam2 {
 
 public sealed class CameraController : MonoBehaviour
 {
-    #region Editable fields
+    #region Editable attributes
 
+    [SerializeField] FlipBook _master = null;
+    [Space]
+    [SerializeField] Transform _pivot = null;
+    [SerializeField] Transform _arm = null;
+    [SerializeField] Transform _shaker = null;
+    [Space]
     [SerializeField] float3 _positionRange = 0.1f;
     [SerializeField] float3 _rotationRange = 30;
     [SerializeField] float _distanceRange = 0.4f;
-    [SerializeField] float _speed = 8;
-
-    #endregion
-
-    #region Public methods
-
-    public void RenewTarget()
-    {
-        var p = _random.NextFloat3(-_positionRange, _positionRange);
-        var r = _random.NextFloat3(-_rotationRange, _rotationRange);
-        var d = _random.NextFloat (-_distanceRange, _distanceRange);
-
-        _target.p = p;
-        _target.r = quaternion.EulerXZY(math.radians(r));
-        _target.d = d;
-    }
+    [Space]
+    [SerializeField] float _backScale = 2;
+    [SerializeField] float2 _tweenSpeed = math.float2(3, 10);
+    [Space]
+    [SerializeField] uint _seed = 8943;
 
     #endregion
 
     #region Private members
 
-    Random _random;
-    (float3 p, quaternion r, float d) _target;
+    void UpdateTransforms(float3 pos, float3 angles, float dist, float speed)
+    {
+        var rot = quaternion.EulerXZY(math.radians(angles));
+        _pivot.localPosition = ExpTween.Step(_pivot.localPosition, pos, speed);
+        _pivot.localRotation = ExpTween.Step(_pivot.localRotation, rot, speed);
+
+        var z = _arm.localPosition.z;
+        z = ExpTween.Step(z, dist, speed);
+        _arm.localPosition = math.float3(0, 0, z);
+        //_shaker.localPosition = (1 - math.smoothstep(0, 0.35f, t1)) * 0.03f * _random.NextFloat3(-1, 1);
+    }
 
     #endregion
 
     #region MonoBehaviour implementation
 
-    //void Start()
-      //=> _random = new Random(8943);
-
     async void Start()
     {
-        _random = new Random(8943);
-
-        while (true)
+        for (var rand = new Random(_seed);;)
         {
-            await Awaitable.WaitForSecondsAsync(1.2f - 0.45f);
-            RenewTarget();
-            await Awaitable.WaitForSecondsAsync(0.45f);
-        }
-    }
+            var pos = rand.NextFloat3(-_positionRange, _positionRange);
+            var rot = rand.NextFloat3(-_rotationRange, _rotationRange);
+            var dist = rand.NextFloat (-_distanceRange, 0);
 
-    void Update()
-    {
-        var child = transform.GetChild(0);
-        transform.localPosition = ExpTween.Step(transform.localPosition, _target.p, _speed);
-        transform.localRotation = ExpTween.Step(transform.localRotation, _target.r, _speed);
-        child.localPosition = ExpTween.Step(child.localPosition, Vector3.forward * _target.d, _speed);
+            var t_0 = _master.SequenceDuration * _master.CurrentPlaySequenceIndex;
+
+            var t_1 = t_0 + _master.SequenceDuration - _master.LastPageDuration;
+            while (_master.CurrentPlayTime < t_1)
+            {
+                UpdateTransforms(pos * _backScale, rot * _backScale, dist * _backScale, _tweenSpeed.x);
+                await Awaitable.NextFrameAsync();
+            }
+
+            var t_2 = t_0 + _master.SequenceDuration;
+            while (_master.CurrentPlayTime < t_2)
+            {
+                UpdateTransforms(pos, rot, dist, _tweenSpeed.y);
+                await Awaitable.NextFrameAsync();
+            }
+        }
     }
 
     #endregion
