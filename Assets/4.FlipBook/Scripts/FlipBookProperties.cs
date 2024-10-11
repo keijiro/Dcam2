@@ -21,7 +21,8 @@ public sealed partial class FlipBook
     [SerializeField] float _easeOutPower = 4;
     [SerializeField] float _motionBlur = 0.1f;
 
-    [SerializeField] string _resourceDir = "StableDiffusion";
+    [SerializeField] string _generatorResourceDir = "StableDiffusion";
+    [SerializeField] bool _loadGeneratorResource = true;
     [SerializeField] Texture _source = null;
 
     #endregion

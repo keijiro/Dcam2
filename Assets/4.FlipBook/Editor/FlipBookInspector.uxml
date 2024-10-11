@@ -1,5 +1,6 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <engine:Label text="Stable Diffusion" name="label-stable-diffusion" style="-unity-font-style: bold; margin-top: 8px;" />
+    <engine:Toggle label="Load" name="enable" binding-path="_loadGeneratorResource" />
     <engine:TextField label="Prompt" binding-path="&lt;Prompt&gt;k__BackingField" multiline="true" name="prompt" style="white-space: normal;" />
     <engine:FloatField binding-path="&lt;Strength&gt;k__BackingField" label="Strength" name="strength" />
     <engine:FloatField label="Guidance" binding-path="&lt;Guidance&gt;k__BackingField" name="guidance" />

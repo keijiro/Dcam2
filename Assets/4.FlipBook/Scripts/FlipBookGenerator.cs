@@ -12,23 +12,26 @@ public sealed partial class FlipBook
     const int ImageWidth = 640;
     const int ImageHeight = 384;
 
-    string ResourcePath
-      => Application.streamingAssetsPath + "/" + _resourceDir;
+    string GeneratorResourcePath
+      => Application.streamingAssetsPath + "/" + _generatorResourceDir;
 
-    MLStableDiffusion.ResourceInfo ResourceInfo
+    MLStableDiffusion.ResourceInfo GeneratorResourceInfo
       => MLStableDiffusion.ResourceInfo.FixedSizeModel
-           (ResourcePath, ImageWidth, ImageHeight);
+           (GeneratorResourcePath, ImageWidth, ImageHeight);
 
     SDPipeline _generator;
 
     async Awaitable InitializeGeneratorAsync()
     {
+        if (!_loadGeneratorResource) return;
+
         _generator = new SDPipeline(_sdPreprocess)
           { Scheduler = Scheduler.Lcm, StepCount = 4 };
 
         Debug.Log("Loading the Stable Diffusion model...");
 
-        await _generator.InitializeAsync(ResourceInfo, ComputeUnits.CpuAndGpu);
+        await _generator.InitializeAsync
+          (GeneratorResourceInfo, ComputeUnits.CpuAndGpu);
 
         Debug.Log("Done.");
     }
