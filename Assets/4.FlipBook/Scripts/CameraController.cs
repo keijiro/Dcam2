@@ -14,7 +14,7 @@ public sealed class CameraController : MonoBehaviour
     [Space]
     [SerializeField] Transform _pivot = null;
     [SerializeField] Transform _arm = null;
-    [SerializeField] Transform _shaker = null;
+    [SerializeField] Jitter _shaker = null;
     [Space]
     [SerializeField] float3 _positionRange = 0.1f;
     [SerializeField] float3 _rotationRange = 30;
@@ -22,6 +22,7 @@ public sealed class CameraController : MonoBehaviour
     [Space]
     [SerializeField] float _backScale = 2;
     [SerializeField] float2 _tweenSpeed = math.float2(3, 10);
+    [SerializeField] float _shakeAmount = 0.1f;
     [Space]
     [SerializeField] uint _seed = 8943;
 
@@ -38,7 +39,8 @@ public sealed class CameraController : MonoBehaviour
         var z = _arm.localPosition.z;
         z = ExpTween.Step(z, dist, speed);
         _arm.localPosition = math.float3(0, 0, z);
-        //_shaker.localPosition = (1 - math.smoothstep(0, 0.35f, t1)) * 0.03f * _random.NextFloat3(-1, 1);
+
+        _shaker.Amount = ExpTween.Step(_shaker.Amount, 0, speed);
     }
 
     #endregion
@@ -61,6 +63,8 @@ public sealed class CameraController : MonoBehaviour
                 UpdateTransforms(pos * _backScale, rot * _backScale, dist * _backScale, _tweenSpeed.x);
                 await Awaitable.NextFrameAsync();
             }
+
+            _shaker.Amount = _shakeAmount;
 
             var t_2 = t_0 + _master.SequenceDuration;
             while (_master.CurrentPlayTime < t_2)
