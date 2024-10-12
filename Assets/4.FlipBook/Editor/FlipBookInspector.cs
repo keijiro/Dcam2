@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 
 namespace Dcam2 {
 
+    /*
 [CustomEditor(typeof(FlipBook))]
 public class FlipBookInspector : Editor
 {
@@ -18,5 +19,6 @@ public class FlipBookInspector : Editor
         return root;
     }
 }
+*/
 
 } // namespace Dcam2

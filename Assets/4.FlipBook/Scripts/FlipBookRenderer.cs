@@ -1,66 +1,67 @@
 using UnityEngine;
+using Unity.Mathematics;
 
 namespace Dcam2 {
 
-// FlipBook - Renderer implementation
-
-public sealed partial class FlipBook
+public sealed class FlipBookRenderer : MonoBehaviour
 {
-    // Background/foreground
-    (MaterialPropertyBlock props, RenderParams rparams, Matrix4x4 matrix) _bg;
-    (MaterialPropertyBlock props, RenderParams rparams, Matrix4x4 matrix) _fg;
+    #region Public property
 
-    // Transform matrix calculation
-    static Matrix4x4 MakePageTransform(float z, float scale)
-      => Matrix4x4.TRS
-           (Vector3.forward * z, Quaternion.identity,
-            new Vector3(1, (float)ImageHeight / ImageWidth, 1) * scale);
+    [field:SerializeField] public float MotionBlur { get; set; } = 0.2f;
 
-    // RenderParams factory
-    RenderParams NewRenderParams(MaterialPropertyBlock props)
-      => new RenderParams(_pageMaterial)
-           { matProps = props, layer = gameObject.layer };
+    #endregion
 
-    void InitializeRenderer()
+    #region Scene object reference
+
+    [SerializeField] PageSequencer _sequencer = null;
+    [SerializeField] TimeKeeper _timeKeeper = null;
+
+    #endregion
+
+    #region Project asset references
+
+    [SerializeField, HideInInspector] Mesh _pageMesh = null;
+    [SerializeField, HideInInspector] Material _pageMaterial = null;
+
+    #endregion
+
+    #region MonoBehaviour implementation
+
+    PageDrawer _bg, _fg;
+
+    void Start()
     {
-        _bg.props = new MaterialPropertyBlock();
-        _fg.props = new MaterialPropertyBlock();
+        _bg = new PageDrawer(_pageMesh, _pageMaterial, gameObject.layer,
+                             z: 0.01f, scale: 3, occlusion: 0.85f);
 
-        _bg.rparams = NewRenderParams(_bg.props);
-        _fg.rparams = NewRenderParams(_fg.props);
-
-        _bg.matrix = MakePageTransform(0.01f, 3);
-        _fg.matrix = MakePageTransform(0, 1);
-
-        _bg.props.SetFloat(ShaderID.Occlusion, 0.85f);
-        _bg.props.SetFloat(ShaderID.Aspect, (float)ImageWidth / ImageHeight);
+        _fg = new PageDrawer(_pageMesh, _pageMaterial, gameObject.layer,
+                             z: 0, scale: 1, occlusion: 0);
     }
 
-    void FinalizeRenderer()
+    void Update()
     {
+        var time = _timeKeeper.PlayerTime;
+
+        // Sequence progress parameters;
+        var t_bg = time.SequenceProgress;
+        var t_fg = time.SequenceProgressEased;
+
+        // Page texture pairs
+        var qidx = time.SequenceIndex % 2;
+        var bg_base = _sequencer.GetPage(qidx, (int)t_bg - 1);
+        var bg_flip = _sequencer.GetPage(qidx, (int)t_bg    );
+        var fg_base = _sequencer.GetPage(qidx, (int)t_fg - 1);
+        var fg_flip = _sequencer.GetPage(qidx, (int)t_fg    );
+
+        // Derivative of the progress parameter (for motion blur)
+        var ddt = (float)time.SequenceProgressEasedDerivative;
+
+        // Page rendering
+        _bg.Render(bg_base, bg_flip, (float)math.frac(t_bg), MotionBlur);
+        _fg.Render(fg_base, fg_flip, (float)math.frac(t_fg), MotionBlur * ddt);
     }
 
-    void RenderBackPage
-      ((RenderTexture baseRT, RenderTexture flipRT) textures,
-       double progress, double blur)
-    {
-        _bg.props.SetTexture(ShaderID.BaseTex, textures.baseRT);
-        _bg.props.SetTexture(ShaderID.FlipTex, textures.flipRT);
-        _bg.props.SetFloat(ShaderID.Progress, (float)progress);
-        _bg.props.SetFloat(ShaderID.Blur, MotionBlur * (float)blur);
-        Graphics.RenderMesh(_bg.rparams, _pageMesh, 0, _bg.matrix);
-    }
-
-    void RenderFrontPage
-      ((RenderTexture baseRT, RenderTexture flipRT) textures,
-       double progress, double blur)
-    {
-        _fg.props.SetTexture(ShaderID.BaseTex, textures.baseRT);
-        _fg.props.SetTexture(ShaderID.FlipTex, textures.flipRT);
-        _fg.props.SetFloat(ShaderID.Progress, (float)progress);
-        _fg.props.SetFloat(ShaderID.Blur, MotionBlur * (float)blur);
-        Graphics.RenderMesh(_fg.rparams, _pageMesh, 0, _fg.matrix);
-    }
+    #endregion
 }
 
 } // namespace Dcam2

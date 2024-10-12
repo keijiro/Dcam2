@@ -129,8 +129,10 @@ GameObject:
   m_Component:
   - component: {fileID: 131558123}
   - component: {fileID: 131558124}
+  - component: {fileID: 131558126}
+  - component: {fileID: 131558125}
   m_Layer: 0
-  m_Name: Time Keeper
+  m_Name: Generator Pipeline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,6 +168,39 @@ MonoBehaviour:
   _pageInterval: 0.075
   _sequenceDuration: 1.35
   _easeOutPower: 2.73
+--- !u!114 &131558125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131558122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15eab275fd9eb4569a229ca41f7f62aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Prompt>k__BackingField: A detailed surreal masterpiece illustration by J. C. Leyendecker
+    of a human exploding in a rococo style room with detailed walls
+  <Strength>k__BackingField: 0.5
+  <Guidance>k__BackingField: 1.25
+  _loadResource: 1
+  _preprocess: {fileID: 7200000, guid: 7c06db8e339994c05bc2ad5e44c940de, type: 3}
+--- !u!114 &131558126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131558122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2409f67a118cf485a8e4e5ef74ef1435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeKeeper: {fileID: 131558124}
+  _source: {fileID: 8400000, guid: 9cd0f1b01971f4e648dec13fca61e55e, type: 2}
+  _generator: {fileID: 131558125}
 --- !u!1 &217308677
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +959,55 @@ Transform:
   - {fileID: 1990580712}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1245718136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1245718137}
+  - component: {fileID: 1245718138}
+  m_Layer: 11
+  m_Name: Flip Book Renderer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1245718137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245718136}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1839422255}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1245718138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245718136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 079c885a112f44562bf59ff40679e0d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MotionBlur>k__BackingField: 0.2
+  _sequencer: {fileID: 131558126}
+  _timeKeeper: {fileID: 131558124}
+  _pageMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  _pageMaterial: {fileID: -876546973899608171, guid: a2c759d370b5b4539807165785354adc, type: 3}
 --- !u!1 &1265354290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,62 +1314,6 @@ MonoBehaviour:
   <BackHue>k__BackingField: 0
   <FrontHue>k__BackingField: 0
   _shader: {fileID: -6465566751694194690, guid: d635ddf4c515b4179ba74946df2b2a50, type: 3}
---- !u!1 &1456620253
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1456620254}
-  - component: {fileID: 1456620255}
-  m_Layer: 11
-  m_Name: Flip Book
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1456620254
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456620253}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1839422255}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1456620255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456620253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90a5575a4c839408fa10abcce3074e82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Prompt>k__BackingField: A detailed surreal masterpiece illustration by J. C. Leyendecker
-    of a human exploding in a rococo style room with detailed walls
-  <Strength>k__BackingField: 0.5
-  <Guidance>k__BackingField: 1.25
-  <MotionBlur>k__BackingField: 0.2
-  _timeKeeper: {fileID: 131558124}
-  _generatorResourceDir: StableDiffusion
-  _loadGeneratorResource: 1
-  _source: {fileID: 8400000, guid: 9cd0f1b01971f4e648dec13fca61e55e, type: 2}
-  _pageMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  _pageMaterial: {fileID: -876546973899608171, guid: a2c759d370b5b4539807165785354adc, type: 3}
-  _sdPreprocess: {fileID: 7200000, guid: 7c06db8e339994c05bc2ad5e44c940de, type: 3}
 --- !u!1 &1651534430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,9 +1566,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 131558123}
+  - {fileID: 1245718137}
   - {fileID: 1651534431}
   - {fileID: 622061236}
-  - {fileID: 1456620254}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1990580711
