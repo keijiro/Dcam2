@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c7bb769314e4fdc80695c260cca046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _time: {fileID: 131558124}
+  _timeKeeper: {fileID: 131558124}
   _pivot: {fileID: 622061236}
   _arm: {fileID: 327523830}
   _shaker: {fileID: 662807952}
@@ -1279,7 +1279,7 @@ MonoBehaviour:
   <Strength>k__BackingField: 0.5
   <Guidance>k__BackingField: 1.25
   <MotionBlur>k__BackingField: 0.2
-  _time: {fileID: 131558124}
+  _timeKeeper: {fileID: 131558124}
   _generatorResourceDir: StableDiffusion
   _loadGeneratorResource: 1
   _source: {fileID: 8400000, guid: 9cd0f1b01971f4e648dec13fca61e55e, type: 2}

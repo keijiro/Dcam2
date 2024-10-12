@@ -17,7 +17,7 @@ public sealed partial class FlipBook
 
     #region Editable attributes
 
-    [SerializeField] TimeKeeper _time = null;
+    [SerializeField] TimeKeeper _timeKeeper = null;
     [SerializeField] string _generatorResourceDir = "StableDiffusion";
     [SerializeField] bool _loadGeneratorResource = true;
     [SerializeField] Texture _source = null;

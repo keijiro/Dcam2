@@ -4,6 +4,6 @@
     <engine:FloatField binding-path="&lt;Strength&gt;k__BackingField" label="Strength" name="strength" />
     <engine:FloatField label="Guidance" binding-path="&lt;Guidance&gt;k__BackingField" name="guidance" />
     <editor:ObjectField label="Source" binding-path="_source" type="UnityEngine.Texture, UnityEngine.CoreModule" name="source" />
-    <editor:ObjectField label="Time Keeper" name="time" binding-path="_time" type="Dcam2.TimeKeeper, Assembly-CSharp" />
+    <editor:ObjectField label="Time Keeper" name="time" binding-path="_timeKeeper" type="Dcam2.TimeKeeper, Assembly-CSharp" />
     <engine:FloatField label="Motion Blur" binding-path="&lt;MotionBlur&gt;k__BackingField" name="motion-blur" />
 </engine:UXML>

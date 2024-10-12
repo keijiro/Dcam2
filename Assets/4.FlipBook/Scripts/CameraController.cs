@@ -10,7 +10,7 @@ public sealed class CameraController : MonoBehaviour
 {
     #region Editable attributes
 
-    [SerializeField] TimeKeeper _time = null;
+    [SerializeField] TimeKeeper _timeKeeper = null;
     [Space]
     [SerializeField] Transform _pivot = null;
     [SerializeField] Transform _arm = null;
@@ -30,16 +30,26 @@ public sealed class CameraController : MonoBehaviour
 
     #region Private members
 
-    void UpdateTransforms(float3 pos, float3 angles, float dist, float speed)
+    void UpdateTransforms
+      (float3 pos, float3 angles, float dist, float scale, float speed)
     {
+        // Scale factor
+        pos *= scale;
+        angles *= scale;
+        dist *= scale;
+
         var rot = quaternion.EulerXZY(math.radians(angles));
+
+        // Position / rotation
         _pivot.localPosition = ExpTween.Step(_pivot.localPosition, pos, speed);
         _pivot.localRotation = ExpTween.Step(_pivot.localRotation, rot, speed);
 
+        // Distance
         var z = _arm.localPosition.z;
         z = ExpTween.Step(z, dist, speed);
         _arm.localPosition = math.float3(0, 0, z);
 
+        // Shake
         _shaker.Amount = ExpTween.Step(_shaker.Amount, 0, speed);
     }
 
@@ -49,27 +59,27 @@ public sealed class CameraController : MonoBehaviour
 
     async void Start()
     {
-        for (var rand = new Random(_seed);;)
+        for (var (time, rand) = (_timeKeeper.PlayerTime, new Random(_seed));;)
         {
+            // New angle
             var pos = rand.NextFloat3(-_positionRange, _positionRange);
             var rot = rand.NextFloat3(-_rotationRange, _rotationRange);
             var dist = rand.NextFloat (-_distanceRange, 0);
 
-            var t_0 = _time.SequenceDuration * _time.CurrentPlaySequenceIndex;
-
-            var t_1 = t_0 + _time.SequenceDuration - _time.LastPageDuration;
-            while (_time.CurrentPlayTime < t_1)
+            // Slow moving away
+            for (var next = time.SequenceLastPageTime; time.Seconds < next;)
             {
-                UpdateTransforms(pos * _backScale, rot * _backScale, dist * _backScale, _tweenSpeed.x);
+                UpdateTransforms(pos, rot, dist, _backScale, _tweenSpeed.x);
                 await Awaitable.NextFrameAsync();
             }
 
+            // Shake initiation
             _shaker.Amount = _shakeAmount;
 
-            var t_2 = t_0 + _time.SequenceDuration;
-            while (_time.CurrentPlayTime < t_2)
+            // Fast zoom in
+            for (var next = time.NextSequenceStartTime; time.Seconds < next;)
             {
-                UpdateTransforms(pos, rot, dist, _tweenSpeed.y);
+                UpdateTransforms(pos, rot, dist, 1, _tweenSpeed.y);
                 await Awaitable.NextFrameAsync();
             }
         }
