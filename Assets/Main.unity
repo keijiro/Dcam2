@@ -119,6 +119,53 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &131558122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 131558123}
+  - component: {fileID: 131558124}
+  m_Layer: 0
+  m_Name: Time Keeper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &131558123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131558122}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1839422255}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &131558124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131558122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f09e32e7adc442ebddf33764ae30b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pageInterval: 0.075
+  _sequenceDuration: 1.35
+  _easeOutPower: 2.73
 --- !u!1 &217308677
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c7bb769314e4fdc80695c260cca046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _time: {fileID: 1456620256}
+  _time: {fileID: 131558124}
   _pivot: {fileID: 622061236}
   _arm: {fileID: 327523830}
   _shaker: {fileID: 662807952}
@@ -1192,7 +1239,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1456620254}
-  - component: {fileID: 1456620256}
   - component: {fileID: 1456620255}
   m_Layer: 11
   m_Name: Flip Book
@@ -1233,28 +1279,13 @@ MonoBehaviour:
   <Strength>k__BackingField: 0.5
   <Guidance>k__BackingField: 1.25
   <MotionBlur>k__BackingField: 0.2
-  _time: {fileID: 1456620256}
+  _time: {fileID: 131558124}
   _generatorResourceDir: StableDiffusion
   _loadGeneratorResource: 1
   _source: {fileID: 8400000, guid: 9cd0f1b01971f4e648dec13fca61e55e, type: 2}
   _pageMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
   _pageMaterial: {fileID: -876546973899608171, guid: a2c759d370b5b4539807165785354adc, type: 3}
   _sdPreprocess: {fileID: 7200000, guid: 7c06db8e339994c05bc2ad5e44c940de, type: 3}
---- !u!114 &1456620256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456620253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57f09e32e7adc442ebddf33764ae30b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pageInterval: 0.075
-  _sequenceDuration: 1.35
-  _easeOutPower: 2.73
 --- !u!1 &1651534430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1537,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 131558123}
   - {fileID: 1651534431}
   - {fileID: 622061236}
   - {fileID: 1456620254}
