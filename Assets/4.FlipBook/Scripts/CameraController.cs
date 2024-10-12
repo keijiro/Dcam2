@@ -10,7 +10,7 @@ public sealed class CameraController : MonoBehaviour
 {
     #region Editable attributes
 
-    [SerializeField] FlipBook _master = null;
+    [SerializeField] TimeKeeper _time = null;
     [Space]
     [SerializeField] Transform _pivot = null;
     [SerializeField] Transform _arm = null;
@@ -55,10 +55,10 @@ public sealed class CameraController : MonoBehaviour
             var rot = rand.NextFloat3(-_rotationRange, _rotationRange);
             var dist = rand.NextFloat (-_distanceRange, 0);
 
-            var t_0 = _master.SequenceDuration * _master.CurrentPlaySequenceIndex;
+            var t_0 = _time.SequenceDuration * _time.CurrentPlaySequenceIndex;
 
-            var t_1 = t_0 + _master.SequenceDuration - _master.LastPageDuration;
-            while (_master.CurrentPlayTime < t_1)
+            var t_1 = t_0 + _time.SequenceDuration - _time.LastPageDuration;
+            while (_time.CurrentPlayTime < t_1)
             {
                 UpdateTransforms(pos * _backScale, rot * _backScale, dist * _backScale, _tweenSpeed.x);
                 await Awaitable.NextFrameAsync();
@@ -66,8 +66,8 @@ public sealed class CameraController : MonoBehaviour
 
             _shaker.Amount = _shakeAmount;
 
-            var t_2 = t_0 + _master.SequenceDuration;
-            while (_master.CurrentPlayTime < t_2)
+            var t_2 = t_0 + _time.SequenceDuration;
+            while (_time.CurrentPlayTime < t_2)
             {
                 UpdateTransforms(pos, rot, dist, _tweenSpeed.y);
                 await Awaitable.NextFrameAsync();

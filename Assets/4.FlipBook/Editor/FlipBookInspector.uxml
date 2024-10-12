@@ -1,18 +1,9 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <engine:Label text="Stable Diffusion" name="label-stable-diffusion" style="-unity-font-style: bold; margin-top: 8px;" />
     <engine:Toggle label="Load" name="enable" binding-path="_loadGeneratorResource" />
     <engine:TextField label="Prompt" binding-path="&lt;Prompt&gt;k__BackingField" multiline="true" name="prompt" style="white-space: normal;" />
     <engine:FloatField binding-path="&lt;Strength&gt;k__BackingField" label="Strength" name="strength" />
     <engine:FloatField label="Guidance" binding-path="&lt;Guidance&gt;k__BackingField" name="guidance" />
     <editor:ObjectField label="Source" binding-path="_source" type="UnityEngine.Texture, UnityEngine.CoreModule" name="source" />
-    <engine:Label text="Flip Animation" name="label-flip-animation" style="-unity-font-style: bold; margin-top: 8px;" />
-    <engine:FloatField label="Sample Interval" binding-path="_sampleInterval" name="sample-interval" />
-    <engine:FloatField label="Sequence Length" binding-path="_sequenceDuration" name="sequence-duration" />
-    <engine:FloatField label="Ease Out Power" binding-path="_easeOutPower" name="ease-out-power" />
-    <engine:FloatField label="Motion Blur" binding-path="_motionBlur" name="motion-blur" />
-    <engine:Label text="Hint" name="label-hint" style="color: rgb(106, 106, 106); margin-top: 4px; margin-right: 4px; margin-bottom: 4px; margin-left: 4px;">
-        <Bindings>
-            <engine:DataBinding property="text" data-source-path="HintText" data-source-type="Dcam2.FlipBook, Assembly-CSharp" binding-mode="ToTarget" />
-        </Bindings>
-    </engine:Label>
+    <editor:ObjectField label="Time Keeper" name="time" binding-path="_time" />
+    <engine:FloatField label="Motion Blur" binding-path="&lt;MotionBlur&gt;k__BackingField" name="motion-blur" />
 </engine:UXML>

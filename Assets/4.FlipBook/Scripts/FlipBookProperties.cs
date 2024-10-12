@@ -11,16 +11,13 @@ public sealed partial class FlipBook
     [field:SerializeField] public string Prompt { get; set; } = "painting";
     [field:SerializeField] public float Strength { get; set; } = 0.5f;
     [field:SerializeField] public float Guidance { get; set; } = 1.25f;
+    [field:SerializeField] public float MotionBlur { get; set; } = 0.2f;
 
     #endregion
 
     #region Editable attributes
 
-    [SerializeField] float _sampleInterval = 0.05f;
-    [SerializeField] float _sequenceDuration = 1.2f;
-    [SerializeField] float _easeOutPower = 4;
-    [SerializeField] float _motionBlur = 0.1f;
-
+    [SerializeField] TimeKeeper _time = null;
     [SerializeField] string _generatorResourceDir = "StableDiffusion";
     [SerializeField] bool _loadGeneratorResource = true;
     [SerializeField] Texture _source = null;

@@ -47,7 +47,7 @@ public sealed partial class FlipBook
         _bg.props.SetTexture(ShaderID.BaseTex, textures.baseRT);
         _bg.props.SetTexture(ShaderID.FlipTex, textures.flipRT);
         _bg.props.SetFloat(ShaderID.Progress, (float)progress);
-        _bg.props.SetFloat(ShaderID.Blur, _motionBlur * (float)blur);
+        _bg.props.SetFloat(ShaderID.Blur, MotionBlur * (float)blur);
         Graphics.RenderMesh(_bg.rparams, _pageMesh, 0, _bg.matrix);
     }
 
@@ -58,7 +58,7 @@ public sealed partial class FlipBook
         _fg.props.SetTexture(ShaderID.BaseTex, textures.baseRT);
         _fg.props.SetTexture(ShaderID.FlipTex, textures.flipRT);
         _fg.props.SetFloat(ShaderID.Progress, (float)progress);
-        _fg.props.SetFloat(ShaderID.Blur, _motionBlur * (float)blur);
+        _fg.props.SetFloat(ShaderID.Blur, MotionBlur * (float)blur);
         Graphics.RenderMesh(_fg.rparams, _pageMesh, 0, _fg.matrix);
     }
 }

@@ -15,20 +15,20 @@ public sealed partial class FlipBook : MonoBehaviour
         await InitializeGeneratorAsync();
 
         // Frame sampling loop
-        for (var (i, task) = (CurrentSampleIndex - 1, (Awaitable)null);;)
+        for (var (i, task) = (_time.CurrentPageIndex - 1, (Awaitable)null);;)
         {
-            await WaitSampleIndex(++i);
+            await _time.WaitPageAsync(++i);
 
             // Queue/page index
-            var qidx = i / QueueLength % 2;
-            var pidx = i % QueueLength;
+            var qidx = i / _time.PagePerSequence % 2;
+            var pidx = i % _time.PagePerSequence;
 
             // Sample
             var page = GetPage(qidx, pidx);
             Graphics.Blit(_source, page);
 
             // Last page: Generator invocation
-            if (pidx == QueueLength - 1)
+            if (pidx == _time.PagePerSequence - 1)
             {
                 if (task?.IsCompleted ?? true)
                     task = RunGeneratorAsync(page, page);
@@ -48,23 +48,23 @@ public sealed partial class FlipBook : MonoBehaviour
     void Update()
     {
         // Normalized time parameter in the sequence
-        var t = math.frac(CurrentPlayTime / SequenceDuration);
+        var t = math.frac(_time.CurrentPlayTime / _time.SequenceDuration);
 
         // Ease-out applied time parameter
-        var t_p = 1 - math.pow(1 - t, _easeOutPower);
+        var t_p = 1 - math.pow(1 - t, _time.EaseOutPower);
 
         // Derivative of t_p, representing the flipping speed
         var dt_p =
-          _easeOutPower * math.pow(1 - t, _easeOutPower - 1);
+          _time.EaseOutPower * math.pow(1 - t, _time.EaseOutPower - 1);
 
         // Queue/page indices
-        var qidx = (int)(CurrentPlayTime / SequenceDuration) % 2;
-        var pidx_bg = (int)(QueueLength * t);
-        var pidx_fg = (int)(QueueLength * t_p);
+        var qidx = (int)(_time.CurrentPlayTime / _time.SequenceDuration) % 2;
+        var pidx_bg = (int)(_time.PagePerSequence * t);
+        var pidx_fg = (int)(_time.PagePerSequence * t_p);
 
         // Page flipping progress parameters
-        var prog_bg = math.frac(QueueLength * t);
-        var prog_fg = math.frac(QueueLength * t_p);
+        var prog_bg = math.frac(_time.PagePerSequence * t);
+        var prog_fg = math.frac(_time.PagePerSequence * t_p);
 
         // Page textures
         var tex_bg = (GetPage(qidx, pidx_bg - 1), GetPage(qidx, pidx_bg));

@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c7bb769314e4fdc80695c260cca046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _master: {fileID: 1456620255}
+  _time: {fileID: 1456620256}
   _pivot: {fileID: 622061236}
   _arm: {fileID: 327523830}
   _shaker: {fileID: 662807952}
@@ -388,6 +388,7 @@ MonoBehaviour:
   _tweenSpeed:
     x: 3
     y: 20
+  _shakeAmount: 0.1
   _seed: 8943
 --- !u!1 &662807950
 GameObject:
@@ -1191,6 +1192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1456620254}
+  - component: {fileID: 1456620256}
   - component: {fileID: 1456620255}
   m_Layer: 11
   m_Name: Flip Book
@@ -1230,16 +1232,29 @@ MonoBehaviour:
     of a human exploding in a rococo style room with detailed walls
   <Strength>k__BackingField: 0.5
   <Guidance>k__BackingField: 1.25
-  _sampleInterval: 0.075
-  _sequenceDuration: 1.35
-  _easeOutPower: 2.73
-  _motionBlur: 0.2
+  <MotionBlur>k__BackingField: 0.2
+  _time: {fileID: 1456620256}
   _generatorResourceDir: StableDiffusion
   _loadGeneratorResource: 1
   _source: {fileID: 8400000, guid: 9cd0f1b01971f4e648dec13fca61e55e, type: 2}
   _pageMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
   _pageMaterial: {fileID: -876546973899608171, guid: a2c759d370b5b4539807165785354adc, type: 3}
   _sdPreprocess: {fileID: 7200000, guid: 7c06db8e339994c05bc2ad5e44c940de, type: 3}
+--- !u!114 &1456620256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456620253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f09e32e7adc442ebddf33764ae30b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pageInterval: 0.075
+  _sequenceDuration: 1.35
+  _easeOutPower: 2.73
 --- !u!1 &1651534430
 GameObject:
   m_ObjectHideFlags: 0
