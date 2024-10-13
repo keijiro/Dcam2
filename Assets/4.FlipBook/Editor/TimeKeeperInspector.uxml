@@ -1,7 +1,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <engine:FloatField label="Page Interval" binding-path="_pageInterval" name="page-interval" />
     <engine:FloatField label="Sequence Length" binding-path="_sequenceDuration" name="sequence-duration" />
-    <engine:FloatField label="Ease Out Power" binding-path="_easeOutPower" name="ease-out-power" />
+    <engine:FloatField label="Ease Out Power" binding-path="&lt;EaseOutPower&gt;k__BackingField" name="ease-out-power" />
     <engine:Label name="label-hint" text="Hint" style="color: rgb(106, 106, 106); margin-top: 4px; margin-right: 4px; margin-bottom: 4px; margin-left: 4px;">
         <Bindings>
             <engine:DataBinding property="text" data-source-path="HintText" data-source-type="Dcam2.TimeKeeper, Assembly-CSharp" binding-mode="ToTarget" />

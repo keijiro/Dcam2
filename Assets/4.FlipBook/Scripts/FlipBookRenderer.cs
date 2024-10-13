@@ -7,6 +7,7 @@ public sealed class FlipBookRenderer : MonoBehaviour
 {
     #region Public property
 
+    [field:SerializeField] public bool EaseOut { get; set; } = true;
     [field:SerializeField] public float MotionBlur { get; set; } = 0.2f;
 
     #endregion
@@ -44,7 +45,7 @@ public sealed class FlipBookRenderer : MonoBehaviour
 
         // Sequence progress parameters;
         var t_bg = time.SequenceProgress;
-        var t_fg = time.SequenceProgressEased;
+        var t_fg = EaseOut ? time.SequenceProgressEased : t_bg;
 
         // Page texture pairs
         var qidx = time.SequenceIndex % 2;
@@ -54,7 +55,7 @@ public sealed class FlipBookRenderer : MonoBehaviour
         var fg_flip = _sequencer.GetPage(qidx, (int)t_fg    );
 
         // Derivative of the progress parameter (for motion blur)
-        var ddt = (float)time.SequenceProgressEasedDerivative;
+        var ddt = EaseOut ? (float)time.SequenceProgressEasedDerivative : 1;
 
         // Page rendering
         _bg.Render(bg_base, bg_flip, (float)math.frac(t_bg), MotionBlur);

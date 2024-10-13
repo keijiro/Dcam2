@@ -10,11 +10,14 @@ public sealed class TimeKeeper : MonoBehaviour
 
     [SerializeField] float _pageInterval = 0.1f;
     [SerializeField] float _sequenceDuration = 1.5f;
-    [SerializeField] float _easeOutPower = 2;
 
     #endregion
 
     #region Public properties
+
+    // The power parameter for the ease-out function
+    [field:SerializeField]
+    public double EaseOutPower { get; set; } = 2;
 
     // Recorder adapter
     public RecorderTime RecorderTime
@@ -35,10 +38,6 @@ public sealed class TimeKeeper : MonoBehaviour
     // The duration of a sequence (recalculated)
     public double SequenceDuration
       => PagePerSequence * (double)_pageInterval;
-
-    // The power parameter for the ease-out function
-    public double EaseOutPower
-      => _easeOutPower;
 
     // The duration of the last page with ease-out
     public double LastPageDuration

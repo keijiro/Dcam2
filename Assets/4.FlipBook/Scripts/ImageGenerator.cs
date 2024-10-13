@@ -19,6 +19,7 @@ public sealed class ImageGenerator : MonoBehaviour
 
     [field:SerializeField] public string Prompt { get; set; } = "painting";
     [field:SerializeField] public float Strength { get; set; } = 0.5f;
+    [field:SerializeField] public int StepCount { get; set; } = 4;
     [field:SerializeField] public float Guidance { get; set; } = 1.25f;
 
     #endregion
@@ -53,6 +54,7 @@ public sealed class ImageGenerator : MonoBehaviour
         {
             _pipeline.Prompt = Prompt;
             _pipeline.Strength = Strength;
+            _pipeline.StepCount = StepCount;
             _pipeline.GuidanceScale = Guidance;
             _pipeline.Seed = Random.Range(1, 2000000000);
             await _pipeline.RunAsync(src, dest, destroyCancellationToken);
@@ -74,7 +76,6 @@ public sealed class ImageGenerator : MonoBehaviour
 
         _pipeline = new SDPipeline(_preprocess);
         _pipeline.Scheduler = Scheduler.Lcm;
-        _pipeline.StepCount = 4;
 
         Debug.Log("Loading the Stable Diffusion model...");
 

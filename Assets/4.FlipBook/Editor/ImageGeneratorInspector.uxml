@@ -1,9 +1,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <engine:Toggle label="Load" name="enable" binding-path="_loadGeneratorResource" />
+    <engine:Toggle label="Load Model" name="load" binding-path="_loadResource" />
     <engine:TextField label="Prompt" binding-path="&lt;Prompt&gt;k__BackingField" multiline="true" name="prompt" style="white-space: normal;" />
     <engine:FloatField binding-path="&lt;Strength&gt;k__BackingField" label="Strength" name="strength" />
+    <engine:IntegerField label="Step Count" value="4" name="step-count" binding-path="&lt;StepCount&gt;k__BackingField" />
     <engine:FloatField label="Guidance" binding-path="&lt;Guidance&gt;k__BackingField" name="guidance" />
-    <editor:ObjectField label="Source" binding-path="_source" type="UnityEngine.Texture, UnityEngine.CoreModule" name="source" />
-    <editor:ObjectField label="Time Keeper" name="time" binding-path="_timeKeeper" type="Dcam2.TimeKeeper, Assembly-CSharp" />
-    <engine:FloatField label="Motion Blur" binding-path="&lt;MotionBlur&gt;k__BackingField" name="motion-blur" />
 </engine:UXML>

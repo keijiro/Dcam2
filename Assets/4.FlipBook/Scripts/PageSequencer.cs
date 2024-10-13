@@ -12,6 +12,12 @@ public sealed class PageSequencer : MonoBehaviour
 
     #endregion
 
+    #region Public property
+
+    [field:SerializeField] public bool EnableGenerator { get; set; } = true;
+
+    #endregion
+
     #region Private members
 
     int QueueLength => _timeKeeper.PagePerSequence;
@@ -27,10 +33,15 @@ public sealed class PageSequencer : MonoBehaviour
 
     // Page reference allowing negative indices
     public RenderTexture GetPage(int qidx, int pidx)
+      => GetPage(qidx * QueueLength + pidx);
+
+    // Page reference by a serial index
+    public RenderTexture GetPage(int idx)
     {
-        qidx += 2;
-        pidx += QueueLength * 2;
-        return _queue[qidx % 2][pidx % QueueLength];
+        idx += QueueLength * 2;
+        var qidx = idx / QueueLength % 2;
+        var pidx = idx % QueueLength;
+        return _queue[qidx][pidx];
     }
 
     #endregion
@@ -58,16 +69,12 @@ public sealed class PageSequencer : MonoBehaviour
         {
             await time.WaitPageAsync(++i);
 
-            // Queue/page index
-            var qidx = i / QueueLength % 2;
-            var pidx = i % QueueLength;
-
-            // Sample
-            var page = GetPage(qidx, pidx);
+            // Frame copy
+            var page = GetPage(i);
             Graphics.Blit(_source, page);
 
             // Last page: Generator invocation
-            if (pidx == QueueLength - 1)
+            if (EnableGenerator && i % QueueLength == QueueLength - 1)
             {
                 if (task?.IsCompleted ?? true)
                     task = _generator.RunGeneratorAsync(page, page);

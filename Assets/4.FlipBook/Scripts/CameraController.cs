@@ -8,23 +8,37 @@ namespace Dcam2 {
 
 public sealed class CameraController : MonoBehaviour
 {
-    #region Editable attributes
+    #region Scene object references
 
     [SerializeField] TimeKeeper _timeKeeper = null;
-    [Space]
     [SerializeField] Transform _pivot = null;
     [SerializeField] Transform _arm = null;
     [SerializeField] Jitter _shaker = null;
-    [Space]
-    [SerializeField] float3 _positionRange = 0.1f;
-    [SerializeField] float3 _rotationRange = 30;
-    [SerializeField] float _distanceRange = 0.4f;
-    [Space]
-    [SerializeField] float _backScale = 2;
-    [SerializeField] float2 _tweenSpeed = math.float2(3, 10);
-    [SerializeField] float _shakeAmount = 0.1f;
-    [Space]
-    [SerializeField] uint _seed = 8943;
+
+    #endregion
+
+    #region Public properties
+
+    [field:Space, SerializeField]
+    public float3 PositionRange { get; set; } = 0.05f;
+
+    [field:SerializeField]
+    public float3 RotationRange { get; set; } = math.float3(10, 10, 15);
+
+    [field:SerializeField]
+    public float DistanceRange { get; set; } = 0.5f;
+
+    [field:Space, SerializeField]
+    public float BackScale { get; set; } = 2;
+
+    [field:SerializeField]
+    public float2 TweenSpeed { get; set; } = math.float2(3, 20);
+
+    [field:SerializeField]
+    public float ShakeAmount { get; set; } = 0.1f;
+
+    [field:Space, SerializeField]
+    public uint Seed { get; set; } = 8943;
 
     #endregion
 
@@ -59,27 +73,27 @@ public sealed class CameraController : MonoBehaviour
 
     async void Start()
     {
-        for (var (time, rand) = (_timeKeeper.PlayerTime, new Random(_seed));;)
+        for (var (time, rand) = (_timeKeeper.PlayerTime, new Random(Seed));;)
         {
             // New angle
-            var pos = rand.NextFloat3(-_positionRange, _positionRange);
-            var rot = rand.NextFloat3(-_rotationRange, _rotationRange);
-            var dist = rand.NextFloat (-_distanceRange, 0);
+            var pos = rand.NextFloat3(-PositionRange, PositionRange);
+            var rot = rand.NextFloat3(-RotationRange, RotationRange);
+            var dist = rand.NextFloat (-DistanceRange, 0);
 
             // Slow moving away
             for (var next = time.SequenceLastPageTime; time.Seconds < next;)
             {
-                UpdateTransforms(pos, rot, dist, _backScale, _tweenSpeed.x);
+                UpdateTransforms(pos, rot, dist, BackScale, TweenSpeed.x);
                 await Awaitable.NextFrameAsync();
             }
 
             // Shake initiation
-            _shaker.Amount = _shakeAmount;
+            _shaker.Amount = ShakeAmount;
 
             // Fast zoom in
             for (var next = time.NextSequenceStartTime; time.Seconds < next;)
             {
-                UpdateTransforms(pos, rot, dist, 1, _tweenSpeed.y);
+                UpdateTransforms(pos, rot, dist, 1, TweenSpeed.y);
                 await Awaitable.NextFrameAsync();
             }
         }

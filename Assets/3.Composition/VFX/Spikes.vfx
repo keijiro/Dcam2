@@ -16,10 +16,10 @@ MonoBehaviour:
   - title: Source Sample
     position:
       serializedVersion: 2
-      x: 516
-      y: 730
-      width: 374
-      height: 144
+      x: 517
+      y: 702
+      width: 492
+      height: 278
     contents:
     - model: {fileID: 8926484042661614916}
       id: 0
@@ -698,7 +698,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 738, y: 788}
+  m_UIPosition: {x: 756, y: 760}
   m_UICollapsed: 0
   m_UISuperCollapsed: 1
   m_InputSlots:
@@ -732,7 +732,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
+      m_SerializableObject: -0.01
     m_Space: -1
   m_Property:
     name: Z Offset
@@ -1123,7 +1123,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":8400000,"guid":"437213ff54cc1c7498ab20825bce6a98","type":2}}'
+      m_SerializableObject: '{"obj":{"fileID":8400000,"guid":"f0a330699c43c422dabf6b6f3e94262f","type":2}}'
     m_Space: -1
   m_Property:
     name: texture
