@@ -102,12 +102,12 @@
             <engine:VisualElement name="row">
                 <VJUITK.VJKnob label="BG" high-value="1">
                     <Bindings>
-                        <engine:DataBinding property="value" data-source-path="Knob1" binding-mode="ToSource" />
+                        <engine:DataBinding property="value" data-source-path="Knob0" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJKnob>
                 <VJUITK.VJKnob label="FG" high-value="1">
                     <Bindings>
-                        <engine:DataBinding property="value" data-source-path="Knob2" binding-mode="ToSource" />
+                        <engine:DataBinding property="value" data-source-path="Knob1" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJKnob>
                 <engine:VisualElement name="spacer" />
@@ -116,6 +116,12 @@
                         <engine:DataBinding property="value" data-source-path="Toggle12" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJToggle>
+                <engine:VisualElement name="spacer" />
+                <VJUITK.VJKnob label="Temp" high-value="1">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Knob2" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJKnob>
             </engine:VisualElement>
         </engine:VisualElement>
         <engine:VisualElement name="camera" style="position: absolute; right: 0; bottom: 0;">

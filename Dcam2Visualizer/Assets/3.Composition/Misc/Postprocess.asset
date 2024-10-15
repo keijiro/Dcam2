@@ -210,3 +210,23 @@ MonoBehaviour:
   - {fileID: -9000464676975092118}
   - {fileID: -5480987120122406614}
   - {fileID: -9031821926152416119}
+  - {fileID: 421854510449803092}
+--- !u!114 &421854510449803092
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
+  m_Name: WhiteBalance
+  m_EditorClassIdentifier: 
+  active: 1
+  temperature:
+    m_OverrideState: 1
+    m_Value: -100
+  tint:
+    m_OverrideState: 0
+    m_Value: 0
