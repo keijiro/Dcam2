@@ -255,14 +255,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a06b2e15c18544aca8c4f7c531bf5eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _basePrompts:
-  - Detailed surreal masterpiece illustration of an exploding human in a rococo style
-    room with detailed walls by J. C. Leyendecker
-  - Detailed surreal masterpiece painting of a cubist room by Henri Matisse
-  - Detailed surreal masterpiece painting of a medieval room by Winslow Homer
-  - Detailed surreal masterpiece sketch of a devil in the hell by Arthur Rackham
-  - Detailed surreal ukiyoe by Hiroshige
   _generator: {fileID: 131558125}
+  _prefix: Detailed surreal masterpiece
+  _bodies:
+  - illustration by J. C. Leyendecker of human exploding in a rococo style room with
+    detailed walls
+  - painting by Henri Matisse in cubist room
+  - painting by Winslow Homer in medieval room
+  - sketch by Arthur Rackham of devil in hell
+  - ukiyoe by Hiroshige
+  _suffixes:
+  - Target: {fileID: 1051025273}
+    Prompt: sparks
+  - Target: {fileID: 1771858788}
+    Prompt: colorful balls
+  - Target: {fileID: 1336083469}
+    Prompt: spikes
+  - Target: {fileID: 709772832}
+    Prompt: veins
 --- !u!1 &131558122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,7 +1128,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 85033847}
         m_TargetAssemblyTypeName: Dcam2.PromptGenerator, Assembly-CSharp
-        m_MethodName: SetBaseIndex
+        m_MethodName: set_SelectorIndex
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1179,7 +1189,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 85033847}
         m_TargetAssemblyTypeName: Dcam2.PromptGenerator, Assembly-CSharp
-        m_MethodName: SetBaseIndex
+        m_MethodName: set_SelectorIndex
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1240,7 +1250,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 85033847}
         m_TargetAssemblyTypeName: Dcam2.PromptGenerator, Assembly-CSharp
-        m_MethodName: SetBaseIndex
+        m_MethodName: set_SelectorIndex
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1869,7 +1879,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 85033847}
         m_TargetAssemblyTypeName: Dcam2.PromptGenerator, Assembly-CSharp
-        m_MethodName: SetBaseIndexShift
+        m_MethodName: set_SelectorShift
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2136,7 +2146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1051025274
 Transform:
   m_ObjectHideFlags: 0
@@ -2160,7 +2170,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051025273}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -3052,7 +3062,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 85033847}
         m_TargetAssemblyTypeName: Dcam2.PromptGenerator, Assembly-CSharp
-        m_MethodName: SetBaseIndex
+        m_MethodName: set_SelectorIndex
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3416,7 +3426,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 85033847}
         m_TargetAssemblyTypeName: Dcam2.PromptGenerator, Assembly-CSharp
-        m_MethodName: SetBaseIndex
+        m_MethodName: set_SelectorIndex
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4297,7 +4307,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 85033847}
         m_TargetAssemblyTypeName: Dcam2.PromptGenerator, Assembly-CSharp
-        m_MethodName: SetBaseIndex
+        m_MethodName: set_SelectorIndex
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
