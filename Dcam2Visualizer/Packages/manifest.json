@@ -3,6 +3,7 @@
     "com.unity.inputsystem": "1.11.1",
     "com.unity.render-pipelines.universal": "17.0.3",
     "jp.keijiro.bodypix": "3.0.0",
+    "jp.keijiro.dcam2.metadata": "file:../../Dcam2Metadata",
     "jp.keijiro.klak.math": "2.1.0",
     "jp.keijiro.klak.motion": "1.1.0",
     "jp.keijiro.klak.ndi": "2.1.3",

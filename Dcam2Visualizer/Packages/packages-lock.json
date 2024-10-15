@@ -171,6 +171,12 @@
       },
       "url": "https://registry.npmjs.com"
     },
+    "jp.keijiro.dcam2.metadata": {
+      "version": "file:../../Dcam2Metadata",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "jp.keijiro.klak.math": {
       "version": "2.1.0",
       "depth": 0,

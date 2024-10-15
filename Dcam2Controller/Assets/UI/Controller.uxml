@@ -1,0 +1,43 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Controller.uss?fileID=7433441132597879392&amp;guid=b36b7ae5b6d46491380e138eaaf62a9c&amp;type=3#Controller" />
+    <engine:VisualElement name="monitor" style="background-image: url(&quot;project://database/Assets/Misc/Camera.renderTexture?fileID=8400000&amp;guid=92ce0328f74b3423798d76e14a1b8648&amp;type=2#Camera&quot;); -unity-background-scale-mode: scale-to-fit; position: absolute; top: 0; left: 0; right: 0; bottom: 0; -unity-background-image-tint-color: rgb(101, 101, 101);" />
+    <engine:VisualElement name="controls" style="position: absolute; left: 80px; right: 80px; top: 40px; bottom: 40px;">
+        <engine:VisualElement name="remote" data-source-type="Dcam2.InputHandle, Dcam2Metadata" style="flex-grow: 1;">
+            <engine:VisualElement name="row">
+                <VJUITK.VJKnob label="Prompt" high-value="16">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Knob0" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJKnob>
+            </engine:VisualElement>
+            <engine:VisualElement name="row">
+                <VJUITK.VJToggle label="Generate">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Toggle0" binding-mode="ToTarget" />
+                    </Bindings>
+                </VJUITK.VJToggle>
+                <engine:VisualElement name="spacer" />
+                <VJUITK.VJKnob label="BG" high-value="1">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Knob1" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJKnob>
+                <VJUITK.VJKnob label="FG" high-value="1">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Knob2" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJKnob>
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="camera" style="position: absolute; right: 0; bottom: 0;">
+            <VJUITK.VJButton label="U. Wide" name="camera-ultrawide" />
+            <VJUITK.VJButton label="Wide" name="camera-wide" />
+            <VJUITK.VJButton label="Tele" name="camera-telephoto" />
+        </engine:VisualElement>
+        <engine:Label text="00:00:00" name="clock" data-source-type="Dcam2.Clock, Assembly-CSharp" style="position: absolute; right: 0; color: rgb(255, 255, 255); top: 0; font-size: 24px;">
+            <Bindings>
+                <engine:DataBinding property="text" data-source-path="TimeText" binding-mode="ToTarget" />
+            </Bindings>
+        </engine:Label>
+    </engine:VisualElement>
+</engine:UXML>

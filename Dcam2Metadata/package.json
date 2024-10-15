@@ -1,0 +1,11 @@
+{
+    "author": "Keijiro Takahashi",
+    "dependencies": { },
+    "description": "Defines the Dcam2 metadata structure.",
+    "displayName": "Dcam2 Metadata",
+    "keywords": [ "unity" ],
+    "name": "jp.keijiro.dcam2.metadata",
+    "unity": "6000.0",
+    "unityRelease": "0f1",
+    "version": "1.0.0"
+}
