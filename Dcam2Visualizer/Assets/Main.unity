@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pageInterval: 0.075
-  _sequenceDuration: 1.35
+  _sequenceDuration: 1.4
   <EaseOutPower>k__BackingField: 2.7300000190734863
 --- !u!114 &131558125
 MonoBehaviour:
@@ -325,12 +325,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Prompt>k__BackingField: A detailed surreal masterpiece illustration by J. C. Leyendecker
-    of a human exploding with colorful balls in a rococo style room with detailed
-    walls
+    of a human exploding
   <Strength>k__BackingField: 0.5
   <StepCount>k__BackingField: 4
   <Guidance>k__BackingField: 1.25
-  _loadResource: 0
+  _loadResource: 1
   _preprocess: {fileID: 7200000, guid: 7c06db8e339994c05bc2ad5e44c940de, type: 3}
 --- !u!114 &131558126
 MonoBehaviour:
@@ -968,7 +967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &498118792
 Transform:
   m_ObjectHideFlags: 0
@@ -992,7 +991,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498118791}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1332,7 +1331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &634123380
 Transform:
   m_ObjectHideFlags: 0
@@ -1953,7 +1952,7 @@ Transform:
   m_GameObject: {fileID: 942595182}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3192,7 +3191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1577235556
 Transform:
   m_ObjectHideFlags: 0
