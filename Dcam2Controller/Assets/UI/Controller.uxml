@@ -4,19 +4,102 @@
     <engine:VisualElement name="controls" style="position: absolute; left: 80px; right: 80px; top: 40px; bottom: 40px;">
         <engine:VisualElement name="remote" data-source-type="Dcam2.InputHandle, Dcam2Metadata" style="flex-grow: 1;">
             <engine:VisualElement name="row">
-                <VJUITK.VJKnob label="Prompt" high-value="16">
-                    <Bindings>
-                        <engine:DataBinding property="value" data-source-path="Knob0" binding-mode="ToSource" />
-                    </Bindings>
-                </VJUITK.VJKnob>
-            </engine:VisualElement>
-            <engine:VisualElement name="row">
-                <VJUITK.VJToggle label="Generate">
+                <VJUITK.VJToggle label="Shift">
                     <Bindings>
                         <engine:DataBinding property="value" data-source-path="Toggle0" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJToggle>
-                <engine:VisualElement name="spacer" />
+                <VJUITK.VJButton label="Prompt 1">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Button0" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJButton>
+                <VJUITK.VJButton label="Prompt 2">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Button1" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJButton>
+                <VJUITK.VJButton label="Prompt 3">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Button2" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJButton>
+                <VJUITK.VJButton label="Prompt 4">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Button3" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJButton>
+                <VJUITK.VJButton label="Prompt 5">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Button4" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJButton>
+                <VJUITK.VJButton label="Prompt 6">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Button5" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJButton>
+            </engine:VisualElement>
+            <engine:VisualElement name="row">
+                <VJUITK.VJToggle label="Orb">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Toggle1" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJToggle>
+                <VJUITK.VJToggle label="Ribbon">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Toggle2" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJToggle>
+                <VJUITK.VJToggle label="Sparkle">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Toggle3" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJToggle>
+                <VJUITK.VJToggle label="Speed">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Toggle4" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJToggle>
+                <VJUITK.VJToggle label="Wiper">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Toggle5" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJToggle>
+            </engine:VisualElement>
+            <engine:VisualElement name="row">
+                <VJUITK.VJToggle label="Aura">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Toggle6" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJToggle>
+                <VJUITK.VJToggle label="Eyes">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Toggle7" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJToggle>
+                <VJUITK.VJToggle label="Electrify">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Toggle8" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJToggle>
+                <VJUITK.VJToggle label="Particle">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Toggle9" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJToggle>
+                <VJUITK.VJToggle label="Spike">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Toggle10" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJToggle>
+                <VJUITK.VJToggle label="Tentacle">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Toggle11" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJToggle>
+            </engine:VisualElement>
+            <engine:VisualElement name="row">
                 <VJUITK.VJKnob label="BG" high-value="1">
                     <Bindings>
                         <engine:DataBinding property="value" data-source-path="Knob1" binding-mode="ToSource" />
@@ -27,6 +110,12 @@
                         <engine:DataBinding property="value" data-source-path="Knob2" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJKnob>
+                <engine:VisualElement name="spacer" />
+                <VJUITK.VJToggle label="Generate">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Toggle12" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJToggle>
             </engine:VisualElement>
         </engine:VisualElement>
         <engine:VisualElement name="camera" style="position: absolute; right: 0; bottom: 0;">
