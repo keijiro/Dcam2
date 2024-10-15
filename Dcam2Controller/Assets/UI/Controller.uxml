@@ -13,7 +13,7 @@
             <engine:VisualElement name="row">
                 <VJUITK.VJToggle label="Generate">
                     <Bindings>
-                        <engine:DataBinding property="value" data-source-path="Toggle0" binding-mode="ToTarget" />
+                        <engine:DataBinding property="value" data-source-path="Toggle0" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJToggle>
                 <engine:VisualElement name="spacer" />
