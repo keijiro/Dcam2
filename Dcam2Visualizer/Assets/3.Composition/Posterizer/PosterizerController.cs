@@ -75,12 +75,12 @@ public sealed class PosterizerController : MonoBehaviour
         _material.SetFloat(ShaderID.Dither, Dithering);
 
         // Keywords
-        if (BackHue > 0)
+        if (BackHue > 0 && BackHue < 1)
             _material.EnableKeyword(_enableBack);
         else
             _material.DisableKeyword(_enableBack);
 
-        if (FrontHue > 0)
+        if (FrontHue > 0 && FrontHue < 1)
             _material.EnableKeyword(_enableFront);
         else
             _material.DisableKeyword(_enableFront);

@@ -556,6 +556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 292456129}
   - component: {fileID: 292456130}
+  - component: {fileID: 292456131}
   m_Layer: 0
   m_Name: FG
   m_TagString: Untagged
@@ -606,6 +607,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &292456131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292456128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64cbbe68c14764b2dbb79e0820a5d736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knobIndex: 1
+  _threshold: 0
+  _target: {fileID: 1060326416}
 --- !u!1 &326999713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,6 +1668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 738570288}
   - component: {fileID: 738570289}
+  - component: {fileID: 738570290}
   m_Layer: 0
   m_Name: BG
   m_TagString: Untagged
@@ -1702,6 +1719,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &738570290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738570287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64cbbe68c14764b2dbb79e0820a5d736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knobIndex: 0
+  _threshold: 0
+  _target: {fileID: 742447920}
 --- !u!1 &742447920
 GameObject:
   m_ObjectHideFlags: 0
