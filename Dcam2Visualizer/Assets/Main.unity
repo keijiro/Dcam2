@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pageInterval: 0.075
-  _sequenceDuration: 1.45
+  _sequenceDuration: 1.5
   <EaseOutPower>k__BackingField: 2.7300000190734863
 --- !u!114 &131558125
 MonoBehaviour:
@@ -747,7 +747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _knobIndex: 1
-  _threshold: 0
+  _threshold: 0.01
   _target: {fileID: 1060326416}
 --- !u!1 &326999713
 GameObject:
@@ -2007,7 +2007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _knobIndex: 0
-  _threshold: 0
+  _threshold: 0.01
   _target: {fileID: 742447920}
 --- !u!1 &742447920
 GameObject:

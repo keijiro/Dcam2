@@ -39,13 +39,16 @@ public sealed class PosterizerController : MonoBehaviour
     Material _material;
     LocalKeyword _enableBack, _enableFront;
 
+    float BackHuePadded => Mathf.Clamp01(BackHue * 1.4f - 0.2f);
+    float FrontHuePadded => Mathf.Clamp01(FrontHue * 1.4f - 0.2f);
+
     Material UpdateMaterial()
     {
         // Color palette
-        var h1 = BackHue;
+        var h1 = BackHuePadded;
         var h2 = (h1 + 0.333f) % 1;
 
-        var h3 = FrontHue;
+        var h3 = FrontHuePadded;
         var h4 = (h3 + 0.333f) % 1;
 
         var bg1 = Color.black;
@@ -75,12 +78,12 @@ public sealed class PosterizerController : MonoBehaviour
         _material.SetFloat(ShaderID.Dither, Dithering);
 
         // Keywords
-        if (BackHue > 0 && BackHue < 1)
+        if (BackHue > 0.01f && BackHue < 0.99f)
             _material.EnableKeyword(_enableBack);
         else
             _material.DisableKeyword(_enableBack);
 
-        if (FrontHue > 0 && FrontHue < 1)
+        if (FrontHue > 0.01f && FrontHue < 0.99f)
             _material.EnableKeyword(_enableFront);
         else
             _material.DisableKeyword(_enableFront);
