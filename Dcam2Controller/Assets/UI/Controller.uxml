@@ -46,56 +46,61 @@
                         <engine:DataBinding property="value" data-source-path="Toggle1" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJToggle>
-                <VJUITK.VJToggle label="Ribbon">
+                <VJUITK.VJToggle label="Petal">
                     <Bindings>
                         <engine:DataBinding property="value" data-source-path="Toggle2" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJToggle>
-                <VJUITK.VJToggle label="Sparkle">
+                <VJUITK.VJToggle label="Ribbon">
                     <Bindings>
                         <engine:DataBinding property="value" data-source-path="Toggle3" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJToggle>
-                <VJUITK.VJToggle label="Speed">
+                <VJUITK.VJToggle label="Sparkle">
                     <Bindings>
                         <engine:DataBinding property="value" data-source-path="Toggle4" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJToggle>
-                <VJUITK.VJToggle label="Wiper">
+                <VJUITK.VJToggle label="Speed">
                     <Bindings>
                         <engine:DataBinding property="value" data-source-path="Toggle5" binding-mode="ToSource" />
+                    </Bindings>
+                </VJUITK.VJToggle>
+                <VJUITK.VJToggle label="Wiper">
+                    <Bindings>
+                        <engine:DataBinding property="value" data-source-path="Toggle6" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJToggle>
             </engine:VisualElement>
             <engine:VisualElement name="row">
                 <VJUITK.VJToggle label="Aura">
                     <Bindings>
-                        <engine:DataBinding property="value" data-source-path="Toggle6" binding-mode="ToSource" />
+                        <engine:DataBinding property="value" data-source-path="Toggle7" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJToggle>
                 <VJUITK.VJToggle label="Eyes">
                     <Bindings>
-                        <engine:DataBinding property="value" data-source-path="Toggle7" binding-mode="ToSource" />
+                        <engine:DataBinding property="value" data-source-path="Toggle8" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJToggle>
                 <VJUITK.VJToggle label="Electrify">
                     <Bindings>
-                        <engine:DataBinding property="value" data-source-path="Toggle8" binding-mode="ToSource" />
+                        <engine:DataBinding property="value" data-source-path="Toggle9" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJToggle>
                 <VJUITK.VJToggle label="Particle">
                     <Bindings>
-                        <engine:DataBinding property="value" data-source-path="Toggle9" binding-mode="ToSource" />
+                        <engine:DataBinding property="value" data-source-path="Toggle10" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJToggle>
                 <VJUITK.VJToggle label="Spike">
                     <Bindings>
-                        <engine:DataBinding property="value" data-source-path="Toggle10" binding-mode="ToSource" />
+                        <engine:DataBinding property="value" data-source-path="Toggle11" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJToggle>
                 <VJUITK.VJToggle label="Tentacle">
                     <Bindings>
-                        <engine:DataBinding property="value" data-source-path="Toggle11" binding-mode="ToSource" />
+                        <engine:DataBinding property="value" data-source-path="Toggle12" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJToggle>
             </engine:VisualElement>
@@ -113,7 +118,7 @@
                 <engine:VisualElement name="spacer" />
                 <VJUITK.VJToggle label="Generate">
                     <Bindings>
-                        <engine:DataBinding property="value" data-source-path="Toggle12" binding-mode="ToSource" />
+                        <engine:DataBinding property="value" data-source-path="Toggle13" binding-mode="ToSource" />
                     </Bindings>
                 </VJUITK.VJToggle>
                 <engine:VisualElement name="spacer" />
