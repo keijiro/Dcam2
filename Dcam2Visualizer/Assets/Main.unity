@@ -265,6 +265,8 @@ MonoBehaviour:
   - sketch by Arthur Rackham of devil in hell
   - ukiyoe by Hiroshige
   _suffixes:
+  - Target: {fileID: 1909616181}
+    Prompt: petals
   - Target: {fileID: 1051025273}
     Prompt: sparks
   - Target: {fileID: 1771858788}
@@ -273,6 +275,8 @@ MonoBehaviour:
     Prompt: spikes
   - Target: {fileID: 709772832}
     Prompt: veins
+  <SelectorShift>k__BackingField: 0
+  <SelectorIndex>k__BackingField: 0
 --- !u!1 &131558122
 GameObject:
   m_ObjectHideFlags: 0
@@ -3524,7 +3528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1577235556
 Transform:
   m_ObjectHideFlags: 0

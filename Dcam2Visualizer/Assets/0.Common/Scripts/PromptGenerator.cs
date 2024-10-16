@@ -25,23 +25,8 @@ public sealed class PromptGenerator : MonoBehaviour
 
     #region Public properties
 
-    public bool SelectorShift
-      { get; set; }
-
-    public int SelectorIndex
-      { get => _selectorIndex; set => SetSelectorIndex(value); }
-
-    #endregion
-
-    #region Property backing members
-
-    int _selectorIndex;
-
-    void SetSelectorIndex(int index)
-    {
-        _selectorIndex = index;
-        UpdatePrompt();
-    }
+    [field:SerializeField] public bool SelectorShift { get; set; }
+    [field:SerializeField] public int SelectorIndex { get; set; }
 
     #endregion
 
@@ -51,7 +36,7 @@ public sealed class PromptGenerator : MonoBehaviour
     {
         var prompt = _prefix + " ";
 
-        var idx = (SelectorShift ? 6 : 0) + _selectorIndex;
+        var idx = (SelectorShift ? 6 : 0) + SelectorIndex;
         prompt += _bodies[idx % _bodies.Length];
 
         for (var i = 0; i < _suffixes.Length; i++)
@@ -67,7 +52,7 @@ public sealed class PromptGenerator : MonoBehaviour
 
     #region MonoBehaviour implementation
 
-    void Start()
+    void Update()
       => UpdatePrompt();
 
     #endregion
