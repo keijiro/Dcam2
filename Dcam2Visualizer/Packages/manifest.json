@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.unity.inputsystem": "1.11.1",
+    "com.unity.inputsystem": "1.11.2",
     "com.unity.render-pipelines.universal": "17.0.3",
     "jp.keijiro.bodypix": "3.0.0",
     "jp.keijiro.dcam2.metadata": "file:../../Dcam2Metadata",
